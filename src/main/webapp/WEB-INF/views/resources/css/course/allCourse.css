@@ -1,0 +1,446 @@
+@charset "UTF-8";
+
+/* Reset */
+* {
+   box-sizing: border-box;
+   font-family: 'Orbitron', 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+   margin: 0;
+   padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+   margin: 0;
+}
+
+ul, ol {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+a, a:hover {
+   text-decoration: none;
+}
+
+body {
+   font-family: Arial, sans-serif;
+   line-height: 1.6;
+}
+
+:root { 
+	--nav-color: #fafafa; /* The default color of the main navmenu links */ 
+	--nav-hover-color: #cc8479;
+   /* Applied to main navmenu links when they are hovered over or active */
+   --nav-mobile-background-color: #1a1a1a;
+   /* Used as the background color for mobile navigation menu */ 
+   --nav-dropdown-background-color: #1a1a1a;
+   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+   --nav-dropdown-color: #fafafa;
+   /* Used for navigation links of the dropdown items in the navigation menu. */
+   --nav-dropdown-hover-color: #18d26e;
+   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+   color: var(--nav-hover-color);
+}
+
+body {
+   background: white;
+}
+
+/* Teach Section */
+.notice-section {
+   padding: 30px;
+   background: #e8c8c3;
+   height: 500px;
+}
+
+.notice-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   max-width: 1320px;
+   margin: auto;
+}
+
+.notice-text {
+   flex: 1;
+   margin-left: 100px;
+   margin-top: 170px;
+   transform: translateY(-46px);
+}
+
+.notice-text .mainTitle {
+   font-size: 50px;
+   font-weight: 700;
+}
+
+.notice-text .mainContent {
+   font-size: 30px;
+   color: #fff;
+   margin-top: -8px;
+}
+
+.notice-image img {
+   width: 400px;
+   height: 400px;
+   margin-top: 50px;
+   margin-right: 100px;
+   animation: moveUpDownReverse 2.5s infinite alternate ease-in-out;
+}
+
+@
+keyframes moveUpDownReverse {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Content Section */
+.content-section {
+   display: flex;
+   padding: 30px 300px;
+   background: #fff;
+}
+
+.sidebar {
+   width: 20%;
+   padding: 0px 20px 30px 0px;
+   background: #ffffff;
+}
+
+.sidebar .exam-date {
+   font-size: 18px;
+   font-weight: 700;
+   margin-bottom: 18px;
+   text-align: center;
+   border-bottom: 2px solid #000;
+   border-top: 2px solid #000;
+   padding: 18px 0 18px 0;
+   color: #000;
+}
+
+.sidebar .exam-date .days {
+   color: red;
+   font-weight: bold;
+}
+
+.sidebar .menu {
+   list-style-type: none;
+   padding-left: 0;
+}
+
+.sidebar .menu li {
+   margin-bottom: 15px;
+   border-bottom: 1px solid #000;
+   padding-bottom: 15px;
+   text-align: center;
+}
+
+.sidebar .menu a:first-child {
+   text-decoration: none;
+   font-size: 18px;
+   font-weight: 900;
+   margin: 0;
+}
+
+.sidebar .menu a {
+   text-decoration: none;
+   color: #222;
+   font-size: 15px;
+}
+
+.sidebar .menu a:nth-child(3) {
+   margin-top: 6px;
+   display: inline-block;
+}
+.sidebar .menu .highlight {
+	color: var(--accent-color);
+	border: none;
+}
+
+.sidebar .menu .highlight div {
+	color: #222;
+	margin-bottom: 15px;
+	padding-bottom: 18px;
+	font-weight: 600;
+	font-size: 23px;
+}
+
+.table-container {
+   width: 80%;
+   padding: 10px;
+   color: #000;
+   margin-left: 30px;
+}
+
+/*네비 투명*/
+.header {
+   background-color: rgba(0, 0, 0, 0);
+}
+
+.course-page {
+	width: 80%;
+}
+
+/* 오른쪽 강좌 TOP5 상단 CSS */
+.lecture-page {
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    background-color : white;
+    color: black;
+}
+
+.lecture-container {
+    display: flex;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.lecture-column {
+    flex: 1;
+    border: 1px solid #ddd;
+}
+
+.column-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.lecture-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lecture-list li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D7D7D7;
+    padding: 10px 0px;
+}
+
+.rank {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.teacher-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+
+.lecture-info {
+    font-size: 14px;
+}
+
+.lecture-title {
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+}
+
+.teacher-name {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 13px;
+}
+
+.column-title-div {
+	background-color: #DEDEDE;
+	padding: 10px;
+}
+
+
+.lecture-list {
+    overflow-y: auto;  /* 세로로 스크롤 가능 */
+    max-height: 150px;
+}
+
+/* 이거 따로 빼둬야 적용돼요! */
+.lecture-list {
+	max-height: 250px;
+}
+/******************************/
+
+
+
+.lecture-list::-webkit-scrollbar {
+    display: none;  /* 스크롤바 숨기기 */
+}
+
+.lecture-list-info {
+	padding: 0px 50px;
+}
+
+.subject-name {
+	font-weight: bold;
+	color: white;
+}
+
+.subject-name-div {
+	margin-top: 5px;
+    background-color: #FFA500;
+    height: 20px;
+    line-height: 20px; /* 수직 중앙 정렬 */
+    text-align: center; /* 수평 중앙 정렬 */
+    width: 40px;
+}
+
+.subject-div {
+	display: flex;
+}
+
+
+
+/* 오른쪽 하단 모든 강좌 CSS */
+.column-title-all {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.all-lecture-div {
+	padding-bottom: 20px;
+    border-bottom: 2px solid black;	
+}
+
+
+.lecture-course-div {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: space-between; /* 양 끝으로 정렬 */
+    border-bottom: 1px solid #ccc;
+    color: black;
+    padding: 20px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    margin-right: 10px; /* 체크박스와 텍스트 간의 간격 */
+}
+
+.course-name {
+    flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.apply-button {
+    background-color: #28a745; /* 녹색 배경 */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.apply-button:hover {
+    background-color: #218838; /* 버튼 hover 시 색상 변경 */
+}
+
+
+
+
+/* 페이징 CSS */ 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 요소 간의 간격 */
+    margin-top: 70px;
+    
+}
+
+
+.pagination-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-size: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+	
+}
+
+
+.pagination-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-radius: 4px; /* 둥근 모서리 */
+}
+
+.pagination-number {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.pagination-number.active {
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold;
+    background-color: #f1b7ca; /* 활성화된 배경색 */
+    color: #fff; /* 글자 색상 변경 */
+    padding: 5px 11px; /* 패딩 추가 */
+    border: 1px solid #f1b7ca; /* 경계선 추가 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-separator {
+    font-size: 14px;
+    color: #aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

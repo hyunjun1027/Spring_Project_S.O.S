@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.fas.fa-star, .far.fa-star {
+    font-size: 15px; /* 별 크기 */
+    color: gold; /* 꽉 찬 별 색상 */
+}
+
+.far.fa-star {
+    color: lightgray; /* 빈 별 색상 */
+}
+
+/*글쓰기*/
+.freeWrite-container {
+  display: flex;
+  align-items: center;
+}
+
+.free-write-button {
+  background: #f66;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* 페이징 CSS */ 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 요소 간의 간격 */
+    margin-top: 30px;
+    
+}
+
+
+.pagination-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-size: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+	
+}
+
+
+.pagination-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-radius: 4px; /* 둥근 모서리 */
+}
+
+.pagination-number {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.pagination-number.active {
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold;
+    background-color: #9175c7; /* 활성화된 배경색 */
+    color: #fff; /* 글자 색상 변경 */
+    padding: 5px 11px; /* 패딩 추가 */
+    border: 1px solid #9175c7; /* 경계선 추가 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-separator {
+    font-size: 14px;
+    color: #aaa;
+}

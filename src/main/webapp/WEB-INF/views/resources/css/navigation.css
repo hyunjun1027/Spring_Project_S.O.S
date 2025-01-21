@@ -1,0 +1,669 @@
+@charset "UTF-8";
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway",  sans-serif;
+  --nav-font: "Poppins",  sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #000000; /* Background color for the entire website, including individual sections */
+  --default-color: #fafafa; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #18d26e; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #1a1a1a; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #fafafa;  /* The default color of the main navmenu links */
+  --nav-hover-color: #10c062; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #18d26e; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #1a1a1a;
+  --surface-color: #343434;
+}
+
+.dark-background {
+  --background-color: rgba(15, 15, 15, 1);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #292929f9;
+  --contrast-color: #000000;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  --background-color: rgba(0, 0, 0, 0.8);
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 15px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 45px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*--------------------------------------------------------------
+# 로그인 모달
+--------------------------------------------------------------*/
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   justify-content: center;
+   align-items: center;
+}
+
+.modal-content {
+   background-color: rgba(0, 0, 0, 0.6);
+   padding: 24px;
+   border-radius: 10px;
+   width: 100%;
+   max-width: 350px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h1 {
+   text-align: center;
+   padding-top: 20px;
+}
+
+.madal-login-btn {
+   width: 100%;
+   padding: 10px;
+   background-color: #00a884;
+   border: none;
+   border-radius: 5px;
+   color: white;
+   font-size: 20px;
+   cursor: pointer;
+   margin-top: 30px;
+   margin-bottom: 20px;
+}
+
+.login-btn {
+   width: 100%;
+   padding: 10px;
+   background-color: var(--nav-dropdown-hover-color);
+   border: none;
+   border-radius: 5px;
+   color: white;
+   font-size: 20px;
+   cursor: pointer;
+   margin-top: 30px;
+   margin-bottom: 20px;
+}
+
+.extra-options {
+   display: flex;
+   justify-content: space-between;
+   margin: 40px 0px 0px 10px;
+   font-size: 15px;
+}
+
+.extra-options a {
+   color: #fff;
+   text-decoration: none;
+}
+
+.extra-options a:hover {
+   color: var(--nav-dropdown-hover-color);
+   text-decoration: none;
+}
+
+.login-form label {
+   font-weight: bold;
+}
+
+.input_box {
+   position: relative;
+   width: 100%;
+}
+
+.input_box, .input_outBox {
+   margin-top: 40px;
+}
+
+.input_box, .input_outBox, .msg_box {
+   clear: both;
+}
+
+.form_input {
+   font-size: 15px;
+   color: #ddd;
+   width: 100%;
+   height: 36px;
+   border: none;
+   border-bottom: solid #ddd 2px;
+   padding-bottom: 10px;
+   padding-left: 10px;
+   position: relative;
+   background: none;
+}
+
+.form_input::placeholder {
+   color: #ddd;
+}
+
+.form_input:focus {
+   outline: none;
+}
+
+.under_bar {
+   display: block;
+   position: absolute;
+   bottom: 0;
+   left: 0%;
+   background-color: var(--nav-hover-color);
+   width: 0;
+   height: 2px;
+   border-radius: 2px;
+   transition: 0.5s;
+}
+
+.sub_cont {
+   position: absolute;
+   color: #f7f7f7;
+   left: 10px;
+   font-size: 20px;
+   transition: all .2s;
+   bottom: 8px;
+   cursor: text;
+}
+
+.form_input:focus ~ .sub_cont, .form_input:valid ~ .sub_cont {
+   font-size: 16px;
+   bottom: 40px;
+   color: var(--nav-hover-color);
+   font-weight: bold;
+}
+
+.form_input:focus ~ .under_bar, .form_input:valid ~ .under_bar {
+   width: 100%;
+}
+
+.login-btn {
+   padding: 6px 0;
+   width: 100%;
+   font-weight: 550;
+   border: none;
+   border-radius: 5px;
+   font-family: 'Lato', sans-serif;
+   font-size: 18px;
+   font-weight: 550;
+   background: #f7f7f7;
+   color: #333;
+   cursor: pointer;
+   transition: all 0.5s ease;
+   position: relative;
+   display: inline-block;
+   z-index: 1;
+   margin-top: 10px;
+}
+
+.login-btn:after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   border-radius: 5px;
+   top: 0;
+   right: 0;
+   z-index: -1;
+   background: var(--nav-hover-color);
+   transition: all 0.5s ease;
+}
+
+.login-btn:nth-child(1):after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   border-radius: 5px;
+   top: 0;
+   right: 0;
+   z-index: -1;
+   background: #ccc;
+   transition: all 0.5s ease;
+}
+
+.login-btn:nth-child(3):after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   border-radius: 5px;
+   top: 0;
+   right: 0;
+   z-index: -1;
+   background: #4285f4;
+   transition: all 0.5s ease;
+}
+.login-btn:nth-child(2):after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   border-radius: 5px;
+   top: 0;
+   right: 0;
+   z-index: -1;
+   background: #17b75e;
+   transition: all 0.5s ease;
+}
+
+.login-btn:hover {
+   color: #f7f7f7;
+}
+
+.login-btn:nth-child(1):hover {
+   color: #000;
+}
+
+.login-btn:hover:after {
+   left: 0;
+   width: 100%;
+}
+
+.login-btn:active {
+   top: 2px;
+}
+
+.find-options {
+   display: flex;
+   gap: 5px; /* 간격 조정 */
+}
+
+.find-options a {
+   color: #fff;
+   text-decoration: none;
+}
+
+.find-options a:hover {
+   color: var(--nav-dropdown-hover-color);
+   text-decoration: none;
+}
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu>ul>li {
+    white-space: nowrap;
+    padding: 15px 14px;
+  }
+  
+  .navmenu>ul>li:nth-child(6){
+     padding: 15px 15px 15px 30px;
+  }
+  .navmenu>ul>li:nth-child(7){
+     padding: 15px 15px 15px 0px;
+  }
+
+  .navmenu>ul>li:last-child {
+    padding: 15px 0px 15px 0px;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+  
+  	.navmenu a.highlight {
+		color: var(--nav-hover-color);
+	}
+
+  .navmenu>ul>li>a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover>a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 25px;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+
+   
+
+  .navmenu ul .modal-mypage-btn img{
+   height: 24px; 
+   filter: invert(0);
+  }
+  .navmenu ul .modal-logout-btn img{
+   height: 22px; 
+   filter: invert(90%) sepia(100%) saturate(0%) hue-rotate(260deg) brightness(110%) contrast(105%)
+  }
+  .navmenu ul .modal-login-btn img{
+   height: 18px; 
+   filter: invert(90%) sepia(100%) saturate(0%) hue-rotate(260deg) brightness(110%) contrast(105%)
+  }
+  .navmenu ul .modal-cart-btn img{
+   height: 24px; 
+   filter: invert(90%) sepia(100%) saturate(0%) hue-rotate(260deg) brightness(110%) contrast(105%)
+  }
+
+   
+
+/* Mobile Navigation */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+}
+
+.left-box {
+   float: left;
+}
+
+.right-box {
+   float: right;
+}
+
+.radio-box {
+   margin: 0px 40px 40px;
+   font-size: 18px;
+}
+
+.radio-box > label {
+   vertical-align: 2px;
+}
+
+input[type='radio'] {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   width: 18px;
+   height: 18px;
+   margin-right: 5px;
+   border: 2px solid #f7f7f7;
+   border-radius: 50%;
+   outline: none;
+}
+
+input[type='radio']:checked {
+   background-color: var(--nav-hover-color);
+   border: 3px solid rgba(40, 40, 40, 0.8);
+   box-shadow: 0 0 0 1px var(--nav-hover-color);
+}
+
+
+/* 흐린 배경 효과 */
+.blur-background {
+    filter: blur(5px);  /* 흐림 효과 */
+    pointer-events: none;  /* 클릭 비활성화 */
+}
+

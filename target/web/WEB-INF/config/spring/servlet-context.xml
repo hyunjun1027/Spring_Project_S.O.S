@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           https://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                           
+    <!-- 어노테이션 스캔 -->
+    <context:component-scan base-package="com.sist.web.controller" />
+
+    <!-- MVC 설정 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.GsonHttpMessageConverter">
+                <property name="gson">
+                    <bean class="org.springframework.http.converter.json.GsonFactoryBean">
+                        <property name="serializeNulls" value="true" />
+                        <property name="prettyPrinting" value="true" />
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 정적 리소스 매핑 -->
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/views/resources/" />
+
+    <!-- 인터셉터 설정 -->
+    <mvc:interceptors>
+        <!-- 캐싱 방지 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+                <property name="cacheSeconds" value="0" />
+            </bean>
+        </mvc:interceptor>
+
+        <!-- 인증 인터셉터 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <bean id="authInterceptor" class="com.sist.web.interceptor.AuthInterceptor">
+                <constructor-arg>
+                    <value>#{env['auth.cookie.name']}</value>
+                </constructor-arg>
+                <constructor-arg>
+                    <value>#{env['ajax.header.name']}</value>
+                </constructor-arg>
+                <constructor-arg>
+                    <list>
+                        <value>/index</value>
+                        <value>/user/userForm</value>
+                        <value>/user/findForm</value>
+                        <value>/board/list</value>
+                        <value>/board/view</value>
+                    </list>
+                </constructor-arg>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- View Resolver -->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/views" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 파일 다운로드 뷰 -->
+    <bean id="fileDownloadView" class="com.sist.web.view.FileDownloadView" />
+
+    <!-- 파일 업로드 설정 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="maxUploadSize" value="#{env['upload.max.size']}" />
+    </bean>
+</beans>

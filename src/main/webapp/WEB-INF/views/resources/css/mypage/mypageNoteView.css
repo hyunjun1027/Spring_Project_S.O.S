@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/* "보내기"와 "목록" 버튼 스타일 */
+.button-container2 {
+	justify-content: flex-start;
+}
+
+.delete1-btn, .received-btn, .list-btn {
+	background-color: #d3d3d3;
+	border: 1px solid #ccc;
+	padding: 8px 16px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-size: 13px;
+}
+
+.delete1-btn:hover {
+	background-color: #e60000;
+}
+
+.received-btn:hover {
+	background-color: #00FF00;
+}
+
+.list-btn:hover {
+	background-color: #0000FF;
+}
+
+.textContainer {
+	padding: 30px 15px;
+	border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.textContainer strong, .textContainer .stats-highlight {
+	display: inline-block;
+}
+
+.textContainer .stats-highlight {
+	color: var(--accent-color);
+	display: inline-block;
+}
+
+.note-content {
+	padding: 30px 15px;
+	min-height: 300px;
+	border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+.btnContainer {
+	display : flex;
+	justify-content: flex-end;
+	width: 100%;	
+}
+
+.btnContainer>.inputBtn {
+	margin: 20px 0 10px 10px;
+	width: 100px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.btnContainer>#writeBtn {
+	background: white;
+	color: #333;
+}
+
+.btnContainer>#deleteBtn {
+	background: #d95353;
+}
+
+.btnContainer>#listBtn {
+	background: #f5d5bc;
+	color: #333;
+}
+
+.btnContainer>.inputBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+.btnContainer>#writeBtn:after {
+	background: #05ad53;
+}
+
+.btnContainer>#deleteBtn:after {
+	background: #b92727;
+}
+
+.btnContainer>#listBtn:after {
+	background: #f9c399;
+}
+
+.btnContainer>.inputBtn:hover {
+	color: #f7f7f7;
+}
+
+.btnContainer>.inputBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.btnContainer>.inputBtn:active {
+	top: 2px;
+}

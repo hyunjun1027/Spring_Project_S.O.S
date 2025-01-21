@@ -1,0 +1,518 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ecf0f1;
+    display: flex;
+    width: 100%;
+}
+
+#wrapper {
+	display: flex;
+    width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	font-family: Arial, sans-serif;
+	margin-left: 300px;
+}
+
+/* 메인 콘텐츠 */
+#main_content {
+	flex: 1;
+	padding: 30px;
+}
+
+h4 {
+	font-size: 22px;
+	font-weight: 550;
+	margin-bottom: 10px;
+}
+
+.search_section {
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding: 15px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search_section form label {
+	margin-right: 10px;
+}
+
+.search_section form input, .search_section form select {
+	margin-right: 10px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.search_section form button {
+	padding: 5px 15px;
+	background-color: #6a74c9;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.search_section form button:hover {
+	background-color: #545baf;
+}
+
+/* 테이블 스타일 */
+.data_table {
+	width: 100%;
+	border-collapse: collapse; /* 테두리 겹침 방지 */
+	background-color: #fff;
+	margin-top: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	table-layout: fixed;
+}
+
+.data_table tr {
+	border: 1px solid #cdd2d4;
+}
+
+.data_table th, .data_table td {
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle; /* 수직 정렬 */
+}
+
+.data_table th {
+	background-color: #e0e3f7;
+	color: #333;
+}
+
+.data_table td a {
+	color: #6a74c9;
+	text-decoration: none;
+}
+
+.data_table td a:hover {
+	text-decoration: underline;
+}
+
+/* 모달 */
+/***모달창 띄우기***/
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+	overflow: hidden; /* 화면 바깥으로 튀어나가지 않도록 설정 */
+	justify-content: center;
+	align-items: center;
+}
+
+/* 모달창 본체 */
+.modal-content {
+	background-color: #fff;
+	width: 90%; /* 화면 크기 기준 */
+	max-width: 800px; /* 최대 너비 */
+	border-radius: 12px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	position: relative;
+	animation: fadeIn 0.3s ease-in-out;
+	overflow: hidden; /* 내부 요소가 튀어나가지 않도록 설정 */
+	display: flex;
+	flex-direction: column;
+	max-height: 80%; /* 화면 기준 최대 높이 설정 */
+	overflow-x: hidden; /* 가로 스크롤을 없앰 */
+	overflow-y: auto; /* 세로 스크롤은 유지 */
+}
+
+/* 애니메이션 효과 */
+@
+keyframes fadeIn {
+	from { 
+		opacity:0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* 모달창 타이틀 */
+.modal-title {
+	margin: 0;
+	padding: 20px;
+	font-size: 1.8em;
+	font-weight: bold;
+	background-color: #6a74c9;
+	color: #fff;
+	text-align: center;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+	background-color: #6a74c9;
+	color: #fff;
+}
+
+/* 입력 섹션 스타일 */
+.modal-body {
+	padding: 20px;
+	overflow-y: auto; /* 스크롤 가능 */
+	flex: 1; /* 나머지 공간 채우기 */
+	overflow-x: hidden; /* 가로 스크롤을 없앰 */
+}
+
+/* .modal-body::-webkit-scrollbar {
+  width: 8px;
+} */
+.modal-body::-webkit-scrollbar-thumb {
+	background-color: #6a74c9;
+	border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+	background-color: #f0f0f0;
+}
+
+.modal-section {
+	margin-bottom: 15px;
+}
+
+.modal-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.modal-input, .modal-textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 1em;
+}
+
+.modal-input:focus, .modal-textarea:focus {
+	border-color: #a084e8;
+	outline: none;
+	box-shadow: 0 0 5px rgba(160, 132, 232, 0.5);
+}
+
+/* 검색 버튼이 있는 입력창 */
+.input-with-search {
+	display: flex;
+}
+
+.input-with-search .modal-input {
+	flex: 1;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.search-btn {
+	border: none;
+	background-color: #a084e8;
+	color: white;
+	padding: 10px 15px;
+	cursor: pointer;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.search-btn:hover {
+	background-color: #8a6fd6;
+}
+
+/* 텍스트 영역 스타일 */
+.modal-textarea {
+	height: 300px;
+	resize: none;
+}
+
+/* 버튼 스타일 */
+.modal-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.modal-btn {
+	padding: 10px 25px;
+	font-size: 1em;
+	font-weight: bold;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.add-btn {
+	background-color: #a084e8;
+	color: white;
+}
+
+.add-btn:hover {
+	background-color: #8a6fd6;
+}
+
+.cancel-btn {
+	background-color: #ccc;
+	color: white;
+}
+
+.cancel-btn:hover {
+	background-color: #a0a0a0;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 15px;
+}
+
+.close:hover {
+	color: #ccc;
+}
+
+/* 모달 하단 버튼 스타일 */
+.modal_footer {
+	display: flex; /* 플렉스 박스 사용 */
+	justify-content: center; /* 버튼들을 중앙 정렬 */
+	gap: 15px; /* 버튼 사이 간격 */
+	padding: 20px 0; /* 위 아래 여백 */
+}
+
+/* Styled select box */
+.styled-select {
+	width: 25%;
+	padding: 10px;
+	font-size: 14px;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	appearance: none; /* Remove default browser styles */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpolygon points='0,0 140,0 70,140' fill='%23666666'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 10px) center;
+	background-size: 10px;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styled-select:focus {
+	border-color: #6a74c9;
+	box-shadow: 0 0 5px rgba(106, 116, 201, 0.5);
+	outline: none;
+}
+
+.styled-select:hover {
+	border-color: #6a74c9;
+}
+
+/* 페이징 스타일 */
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	gap: 5px;
+}
+
+.page-link {
+	padding: 8px 12px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #6a74c9;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background-color: #fff;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover{
+	background-color: #6a74c9;
+	cursor: pointer;
+}
+
+.page-link:hover a{
+	color: #fff;
+}
+
+.page-link.active {
+	background-color: #6a74c9;
+	color: #fff;
+	border-color: #6a74c9;
+	font-weight: bold;
+}
+
+.product-img {
+	height: 150px;
+	width: 100px;
+}
+
+/* Styled select box */
+.styled-select {
+	width: 25%;
+	padding: 10px;
+	font-size: 14px;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	appearance: none; /* Remove default browser styles */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpolygon points='0,0 140,0 70,140' fill='%23666666'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 10px) center;
+	background-size: 10px;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styled-select:focus {
+	border-color: #6a74c9;
+	box-shadow: 0 0 5px rgba(106, 116, 201, 0.5);
+	outline: none;
+}
+
+.styled-select:hover {
+	border-color: #6a74c9;
+}
+
+/* 이미지 미리보기 스타일 */
+#bookImgPreview {
+	width: 150px; /* 원하는 크기로 수정 */
+	height: auto; /* 비율 유지 */
+	margin-bottom: 10px; /* 아래 여백 */
+	display: block; /* 보이게 설정 */
+	object-fit: contain; /* 이미지 비율을 유지하며 크기 맞추기 */
+	border: 1px solid #ddd; /* 이미지 주변에 테두리 추가 (선택 사항) */
+}
+
+/* 모달 창에서 이미지 컨테이너 스타일 */
+.modal-img {
+	max-width: 100%; /* 모달 안에서 이미지 크기가 제한되지 않도록 */
+	height: auto;
+	object-fit: contain; /* 이미지를 비율에 맞게 표시 */
+}
+
+/***등록버튼***/
+.pagination-wrapper {
+	display: flex;
+	justify-content: space-between; /* 양쪽 끝으로 분배 */
+	align-items: center; /* 세로 중앙 정렬 */
+	margin-top: 20px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center; /* 페이지 버튼 중앙 정렬 */
+	align-items: center;
+	gap: 5px; /* 버튼 사이 간격 */
+	margin: 0 auto; /* 중앙 정렬 */
+}
+
+.page-link {
+	padding: 8px 12px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #6a74c9;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background-color: #fff;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+	background-color: #6a74c9;
+	color: #fff;
+}
+
+.page-link.active {
+	background-color: #6a74c9;
+	color: #fff;
+	border-color: #6a74c9;
+	font-weight: bold;
+}
+
+.page-link a {
+	text-decoration: none;
+}
+
+#btnRegister {
+	padding: 8px 15px;
+	background-color: #6a74c9;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+#btnRegister:hover {
+	background-color: #545baf;
+}
+
+.btn {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	font-weight: 550;
+	background-color: #6a74c9;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.btn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	background: #464e95;
+	transition: all 0.5s ease;
+}
+
+.btn:hover {
+	color: white;
+}
+
+.btn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.btn:active {
+	top: 2px;
+}

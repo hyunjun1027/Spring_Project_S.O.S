@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+.boardContainer {
+	margin-bottom: 300px;
+}
+
+.table-container {
+    margin: auto; /* 중앙 정렬 */
+    overflow: hidden; /* 자식 요소가 넘칠 경우 처리 */
+}
+
+table {
+    width: 100%; /* 테이블 너비 100% */
+    border-collapse: collapse; /* 테두리 겹치기 제거 */
+}
+
+th, td {
+    padding: 15px; /* 셀 안의 패딩 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+th {
+	padding-bottom: 20px;
+}
+
+td {
+	border-bottom: 3px solid #444; /* 아래쪽 경계선 추가 */
+	padding: 25px;
+}
+
+tbody tr {
+    background-color: #333; /* 짝수 행 배경색 설정 */
+}
+
+.payment-order-product {
+	margin-bottom: 50px;
+}
+
+.deli-info-container td {
+	text-align: left;
+}
+
+.addr-div input:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+input {
+	border: 1px solid gray;
+	background-color: #D9D9D9;
+	border-radius: 3px;
+}
+
+.select-field {
+    box-sizing: border-box;
+    padding: 7px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: #D9D9D9;
+}
+
+.addrCodeBtn {
+	height: 35px;
+	background-color: var(--nav-hover-color);
+	border-radius: 5px;
+	color: white;
+	border: #D9D9D9;
+}
+
+.deli-info-container {
+	margin-bottom: 70px;
+}
+
+.second-div {
+	 border-bottom: 3px solid #666;
+}
+
+.second-title {
+	margin-bottom: 10px;
+}
+
+.pay-container {
+    display: flex; /* Flexbox 활성화 */
+    justify-content: space-between; /* 아이템 간의 간격을 균등하게 배분 */
+    align-items: center; /* 세로 정렬 */
+    border-bottom: 3px solid #666; /* 하단 회색 선 */
+    margin-bottom: 70px;
+}
+
+.pay-container div {
+    flex: 1; /* 각 div가 동일한 비율로 공간을 차지하도록 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    position: relative; /* 자식 요소의 위치를 기준으로 설정 */
+    padding: 35px 0; /* 내부 패딩 추가 */
+    box-sizing: border-box; /* 패딩과 보더를 포함한 크기 설정 */
+}
+
+.pay-container div h3 {
+	font-size: 20px;
+}
+
+.pay-container div span {
+	font-size: 24px;
+}
+
+.pay-container div:not(:last-child)::after {
+    content: ""; /* 빈 요소로 선을 그림 */
+    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+    top: 0; /* 상단부터 시작 */
+    right: 0; /* 오른쪽에 위치 */
+    width: 1px; /* 선의 두께 */
+    height: 100%; /* 부모 높이에 맞춤 */
+    background-color: #444; /* 선의 색상 */
+}
+
+.pay, .pay-green {
+	font-size: 30px;
+}
+
+.pay-green {
+	color: var(--nav-hover-color);
+}
+
+/* 체크박스 CSS */
+input[type='radio'] {
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
+  width: 13px;
+  height: 13px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  outline: none; 
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle; /* 텍스트와 수직 정렬 */
+}
+
+input[type='radio']:checked {
+  background-color: var(--nav-hover-color);
+  border: 5px solid #fff; 
+  box-shadow: 0 0 0 1px #111; 
+}
+
+.payment-method {
+	margin: 30px 0 50px 40px;
+	font-size: 20px;
+}
+
+.button-container {
+    text-align: center; /* 버튼을 중앙에 배치 */
+    margin-top: 30px; /* 위쪽 여백 */
+}
+
+.button-container>.inputBtn {
+	margin: 20px 0 10px 10px;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.button-container>#paymentBtn {
+	background: #d95353;
+}
+
+.button-container>.inputBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+.button-container>#paymentBtn:after {
+	background: #b92727;
+}
+
+.button-container>.inputBtn:hover {
+	color: #f7f7f7;
+}
+
+.button-container>.inputBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.button-container>.inputBtn:active {
+	top: 2px;
+}
+
+

@@ -1,0 +1,288 @@
+@charset "UTF-8";
+/*=====================================================
+	mypage css
+======================================================*/
+.container {
+	clear: both;
+	max-width: 1320px;
+	margin: auto;
+	padding: 250px 0px;
+}
+
+.leftBox {
+	float: left;
+}
+
+.rightBox {
+	float: right;
+	margin-top: -70px;
+}
+
+.userTopContainer {
+	padding: 25px 25px 30px;
+	border-bottom: 3px solid #444;
+}
+
+.userBottomContainer {
+	padding: 10px 25px 20px;
+}
+
+/*=====================================================
+	mypage userInfo css
+======================================================*/
+.userInfoContainer {
+	padding: 25px;
+	width: 21%;
+	background: rgba(70, 70, 70, 0.4);
+	border-radius: 40px;
+}
+
+.userInfoContainer .userFileContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.userInfoContainer .userFileContainer .profile-photo {
+	width: 175px;
+	height: 175px;
+	border-radius: 100px;
+}
+
+.userInfoContainer .userNameContainer {
+	margin: 20px 0;
+	text-align: center;
+}
+
+.userInfoContainer .infoContainer {
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.userInfoContainer .infoContainer div {
+	display: flex;
+	justify-content: left;
+	flex-direction: column;
+}
+
+.userInfoContainer .infoContainer div:nth-child(1),
+.userInfoContainer .infoContainer div:nth-child(3) {
+	flex-basis: calc(40%);
+}
+
+.userInfoContainer .infoContainer div:nth-child(2),
+.userInfoContainer .infoContainer div:nth-child(4) {
+	flex-basis: calc(60%);
+	
+}
+
+.userInfoContainer .infoContainer div {
+	display: flex;
+	flex-basis: calc(50%);
+	flex-direction: column;
+	justify-content: left;
+	margin: 2px 0px;
+}
+
+.userInfoContainer .infoContainer div div {
+	display: flex;
+	flex-direction: row;
+}
+
+.userInfoContainer .infoContainer div:nth-child(2) div,
+.userInfoContainer .infoContainer div:nth-child(4) div {
+	border-left: 3px solid #444;
+	padding-left: 20px;
+}
+
+.userInfoContainer .infoContainer div div span {
+	color: var(--nav-hover-color);
+}
+
+.userInfoContainer .infoContainer a {
+	text-decoration: none;
+	color: white;
+	transition: 0.2s;
+}
+
+.userInfoContainer .infoContainer a:hover {
+	color: var(--accent-color);
+	transition: 0.2s;
+}
+
+.userBottomContainer .menuList ul, .userBottomContainer .menuList li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.userBottomContainer .menuList > ul > li {
+	color: #888;
+	margin: 25px 0;
+}
+
+.userBottomContainer .menuList > ul > li > ul {
+	margin: 5px 0;
+}
+
+.userBottomContainer .menuList span {
+	color: white;
+}
+
+.userBottomContainer .menuList a {
+	text-decoration: none;
+	color: #999;
+	transition: 0.2s;
+}
+
+.userBottomContainer .menuList a:hover {
+	color: var(--accent-color);
+	transition: 0.2s;
+}
+
+/*=====================================================
+	mypage myStudy css
+======================================================*/
+.contentContainer {
+	width: 75%;
+}
+
+.contentContainer h2 {
+	width: 100%;
+	padding: 15px 5px;
+	border-bottom: 3px solid #666;
+}
+
+.contentContainer .myCourseContainer {
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.contentContainer .myCourseContainer > div {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	flex-basis: calc(50%);
+	text-align: center;
+	margin: 77px 0px;
+}
+
+.contentContainer .myCourseContainer > div:first-child {
+	border-right: 1px solid gray;
+}
+
+.contentContainer .myCourseContainer > div > h3 {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.contentContainer .myCourseContainer > div > span {
+	font-size: 18px;
+}
+
+.contentContainer .myCourseContainer > div > div {
+	margin: 25px 0 12px;
+}
+
+.contentContainer .myCourseContainer > div > div span {
+	font-size: 43px;
+	font-family: none;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+.second-title {
+	font-size: 27px;
+}
+
+.contentContainer .myRecentContainer {
+	width: 80%;
+	margin: auto;
+}
+
+.contentContainer .myRecentContainer .subjectList {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.contentContainer .myRecentContainer .subjectList nav {
+	font-size: 18px;
+	width: 100%;
+	padding-bottom: 5px;
+	display: flex;
+	justify-content: center;
+	border-bottom: 2px solid #666;
+}
+
+.contentContainer .myRecentContainer .subjectList nav > ul > li {
+	padding: 15px 20px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList {
+	width: 100%;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem img {
+	width: 150px;
+	height: 150px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem {
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin-top: 60px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:first-child {
+	flex-basis: calc(25%);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child {
+	flex-basis: calc(75%);
+	font-size: 18px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div {
+	display: inline;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .teach-subject {
+	color: var(--accent-color);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .teach-subject-title {
+	font-weight: 550;
+	font-size: 25px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .my-ing {
+	color: var(--accent-color);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > .middle-container {
+	margin: 10px 0 50px;
+}
+
+/*=====================================================
+	mypage myNote css
+======================================================*/
+.contentBoardContainer {
+	margin-top: 100px;
+}
+
+
+
+
+

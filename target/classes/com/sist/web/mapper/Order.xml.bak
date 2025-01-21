@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sist.web.dao.OrderDao">
+
+<!--  주문 TABLE resultMap -->
+<resultMap type="com.sist.web.model.Order" id="OrderResultMap">
+		<id column="ORDER_SEQ" property="orderSeq"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="ORDER_NAME" property="orderName"/>
+		<result column="ORDER_PHONE" property="orderPhone"/>
+		<result column="ORDER_DATE" property="orderDate"/>
+		<result column="ORDER_CANCLE_DATE" property="orderCancleDate"/>
+		<result column="ORDER_CNT" property="orderCnt"/>
+		<result column="PRD_PRICE" property="prdPrice"/>
+		<result column="PAY_PRICE" property="payPrice"/>
+		<result column="ORDER_PRO_NAME" property="orderProName"/>
+		<result column="ORDER_STATUS" property="orderStatus"/>
+		<result column="PAY_STATUS" property="payStatus"/>
+		<result column="TID" property="tid"/>
+</resultMap>
+
+<!--  주문상세 TABLE resultMap -->
+<resultMap type="com.sist.web.model.OrderDetail" id="OrderDetailResultMap">
+		<id column="ORDER_DT_SEQ" property="orderDtSeq"/>
+		<result column="ORDER_SEQ" property="orderSeq"/>
+		<result column="BOOK_SEQ" property="bookSeq"/>
+		<result column="PRD_PRICE" property="prdPrice"/>
+		<result column="ORDER_CNT" property="orderCnt"/>
+		<result column="PAY_PRICE" property="payPrice"/>
+		<result column="PRO_NAME" property="proName"/>
+</resultMap>
+
+<!--  배송 TABLE resultMap -->
+<resultMap type="com.sist.web.model.DeliveryInfo" id="DeliInfoResultMap">
+		<id column="DELIVERY_SEQ" property="deliverySeq"/>
+		<result column="ORDER_SEQ" property="orderSeq"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="USER_PHONE" property="userPhone"/>
+		<result column="ADDR_CODE" property="addrCode"/>
+		<result column="ADDR_BASE" property="addrBase"/>
+		<result column="ADDR_DETAIL" property="addrDetail"/>
+		<result column="DLV_REQUEST" property="dlvRequest"/>
+		<result column="DLV_STATUS" property="dlvStatus"/>
+		<result column="DLV_START_DATE" property="dlvStartDate"/>
+		<result column="DLV_END_DATE" property="dlvEndDate"/>
+		<result column="DLV_NAME" property="dlvName"/>
+</resultMap>
+
+
+
+
+
+<!-- 주문 INSERT -->
+<insert id="orderInsert" parameterType="com.sist.web.model.Order" useGeneratedKeys="true" keyProperty="orderSeq">
+    <!-- 시퀀스 -->
+    <selectKey resultType="long" keyProperty="orderSeq" order="BEFORE">
+        SELECT CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD'), LPAD(SEQ_EDU_ORDER_SEQ.NEXTVAL, 6, '0')) AS orderSeq
+        FROM DUAL
+    </selectKey>
+
+    INSERT INTO EDU_ORDER (
+        ORDER_SEQ,
+        <if test='userType != null and userType != "" and userType.equals("U")'>
+            USER_ID,
+        </if>
+        ORDER_NAME,
+        ORDER_PHONE,
+        ORDER_DATE,
+        ORDER_CANCLE_DATE,
+        ORDER_CNT,
+        PRD_PRICE,
+        PAY_PRICE,
+        ORDER_STATUS,
+        PAY_STATUS,
+        ORDER_PRO_NAME,
+        TID,
+        <if test='userType != null and userType != "" and userType.equals("T")'>
+            TEACHER_ID,
+        </if>
+        USER_TYPE
+    ) VALUES (
+        #{orderSeq},
+        <if test='userType != null and userType != "" and userType.equals("U")'>
+            #{userId},
+        </if>
+        #{orderName},
+        #{orderPhone},
+        SYSDATE,
+        NULL,
+        #{orderCnt},
+        #{prdPrice},
+        #{payPrice},
+        #{orderStatus},
+        #{payStatus},
+        #{orderProName},
+        #{tid},
+        <if test='userType != null and userType != "" and userType.equals("T")'>
+            #{userId},
+        </if>
+        #{userType}
+    )
+</insert>
+
+
+<!--  주문완료 UPDATE -->
+<update id="orderComUpdate" parameterType="com.sist.web.model.Order">
+		UPDATE EDU_ORDER
+		   SET PAY_STATUS = #{payStatus},
+		       TID = #{tid}
+		 WHERE ORDER_SEQ = #{orderSeq}       
+</update>
+
+<!-- 주문조회 SELECT -->
+<select id="orderSelect" parameterType="long" resultMap="OrderResultMap">
+		SELECT
+		    ORDER_SEQ,
+		    USER_ID,
+		    ORDER_NAME,
+		    ORDER_PHONE,
+		    TO_CHAR(ORDER_DATE, 'YYYYMMDD') ORDER_DATE,
+		    ORDER_CANCLE_DATE,
+		    ORDER_CNT,
+		    PRD_PRICE,
+		    PAY_PRICE,
+		    ORDER_STATUS,
+		    PAY_STATUS,
+		    ORDER_PRO_NAME,
+		    TID,
+		    TEACHER_ID,
+		    USER_TYPE
+		FROM
+		    EDU_ORDER
+		WHERE
+		    ORDER_SEQ = #{value}
+</select>
+
+<!--  내가 주문한 내역 조회 SELECT -->
+<select id="myOrderList" parameterType="com.sist.web.model.Order" resultMap="OrderResultMap">
+		SELECT
+		    RNUM,
+		    ORDER_SEQ,
+		    USER_ID,
+		    ORDER_NAME,
+		    ORDER_PHONE,
+		    ORDER_DATE,
+		    ORDER_CANCLE_DATE,
+		    ORDER_CNT,
+		    PRD_PRICE,
+		    PAY_PRICE,
+		    ORDER_STATUS,
+		    PAY_STATUS,
+		    ORDER_PRO_NAME,
+		    TID,
+		    TEACHER_ID,
+		    USER_TYPE
+		FROM (SELECT
+		        ROWNUM RNUM,
+		        ORDER_SEQ,
+		        USER_ID,
+		        ORDER_NAME,
+		        ORDER_PHONE,
+		        ORDER_DATE,
+		        ORDER_CANCLE_DATE,
+		        ORDER_CNT,
+		        PRD_PRICE,
+		        PAY_PRICE,
+		        ORDER_STATUS,
+		        PAY_STATUS,
+		        ORDER_PRO_NAME,
+		        TID,
+		        TEACHER_ID,
+		        USER_TYPE
+		    FROM
+		        (SELECT
+		            ORDER_SEQ,
+		            USER_ID,
+		            ORDER_NAME,
+		            ORDER_PHONE,
+		            TO_CHAR(ORDER_DATE, 'YYYY.MM.DD') ORDER_DATE,
+		            TO_CHAR(ORDER_CANCLE_DATE, 'YYYY.MM.DD') ORDER_CANCLE_DATE,
+		            ORDER_CNT,
+		            PRD_PRICE,
+		            PAY_PRICE,
+		            ORDER_STATUS,
+		            PAY_STATUS,
+		            ORDER_PRO_NAME,
+		            TID,
+		            TEACHER_ID,
+		            USER_TYPE
+		        FROM
+		            EDU_ORDER
+		        WHERE
+		        	<if test='userType != null and userType != "" and userType.equals("U")'>
+		            USER_ID = #{userId}
+		            </if>
+		            <if test='userType != null and userType != "" and userType.equals("T")'>
+		            TEACHER_ID = #{userId}
+		            </if>
+		        ORDER BY
+		            ORDER_SEQ DESC))
+		WHERE
+		    RNUM <![CDATA[>=]]> #{startRow}
+		AND
+		    RNUM <![CDATA[<=]]> #{endRow}
+</select>
+
+<!--  내가 주문한 내역 개수 조회 SELECT -->
+<select id="myOrderListCount" parameterType="com.sist.web.model.Order" resultType="int">
+	SELECT
+	    COUNT(ORDER_SEQ)
+	FROM
+	    EDU_ORDER
+	WHERE
+     	<if test='userType != null and userType != "" and userType.equals("U")'>
+         USER_ID = #{userId}
+         </if>
+         <if test='userType != null and userType != "" and userType.equals("T")'>
+         TEACHER_ID = #{userId}
+         </if>
+</select>
+
+<!--  주문 삭제 -->
+<delete id="orderDelete" parameterType="long">
+	DELETE FROM EDU_ORDER
+	WHERE ORDER_SEQ = #{value}
+</delete>
+
+
+
+
+<!-- ################################################################################################ -->
+
+
+<!--  주문상세 INSERT -->
+<insert id="orderDetailInsert" parameterType="com.sist.web.model.OrderDetail">
+		<!--  시퀀스 -->
+		<selectKey resultType="long" keyProperty="orderDtSeq" order="BEFORE">
+			SELECT SEQ_EDU_ORDER_DETAIL_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO EDU_ORDER_DETAIL (
+		    ORDER_DT_SEQ,
+		    ORDER_SEQ,
+		    BOOK_SEQ,
+		    PRD_PRICE,
+		    ORDER_CNT,
+		    PAY_PRICE,
+		    PRO_NAME
+		) VALUES (
+		    #{orderDtSeq},
+		    #{orderSeq},
+		    #{bookSeq},
+		    #{prdPrice},
+		    #{orderCnt},
+		    #{payPrice},
+		    #{proName}
+		)		
+		
+</insert>
+
+<!--  주문상세조회 SELECT -->
+<select id="orderDetailSelect" parameterType="long" resultMap="OrderDetailResultMap">
+		SELECT
+		    ORDER_DT_SEQ,
+		    ORDER_SEQ,
+		    BOOK_SEQ,
+		    PRD_PRICE,
+		    ORDER_CNT,
+		    PAY_PRICE,
+		    PRO_NAME
+		FROM
+		    EDU_ORDER_DETAIL
+		WHERE
+		    ORDER_SEQ = #{value}
+</select>
+
+
+
+<!-- ################################################################################################ -->
+
+
+<!--  배송 테이블 INESRT -->
+<insert id="deliInfoInsert" parameterType="com.sist.web.model.DeliveryInfo">
+		<!--  시퀀스 -->
+		<selectKey resultType="long" keyProperty="deliverySeq" order="BEFORE">
+			SELECT SEQ_EDU_DELI_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+
+		INSERT INTO EDU_DELIVERY_INFO (
+		    DELIVERY_SEQ,
+		    ORDER_SEQ,
+		    USER_ID,
+		    USER_PHONE,
+		    ADDR_CODE,
+		    ADDR_BASE,
+		    ADDR_DETAIL,
+		    DLV_REQUEST,
+		    DLV_STATUS,
+		    DLV_START_DATE,
+		    DLV_END_DATE,
+		    DLV_NAME
+		) VALUES (
+		    #{deliverySeq},
+		    #{orderSeq},
+		    #{userId},
+		    #{userPhone},
+		    #{addrCode},
+		    #{addrBase},
+		    #{addrDetail},
+		    #{dlvRequest},
+		    NULL,
+		    NULL,
+		    NULL,
+		    #{dlvName}
+		)
+</insert>
+
+
+<!--  배송조회 SELECT -->
+<select id="deliInfoSelect" parameterType="long" resultMap="DeliInfoResultMap">
+		SELECT
+		    DELIVERY_SEQ,
+		    ORDER_SEQ,
+		    USER_ID,
+		    USER_PHONE,
+		    ADDR_CODE,
+		    ADDR_BASE,
+		    ADDR_DETAIL,
+		    DLV_REQUEST,
+		    DLV_STATUS,
+		    DLV_START_DATE,
+		    DLV_END_DATE,
+		    DLV_NAME
+		FROM
+		    EDU_DELIVERY_INFO
+		WHERE
+		    ORDER_SEQ = #{value}
+</select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,302 @@
+@charset "UTF-8";
+/* Reset */
+*{box-sizing: border-box; font-family: 'Orbitron', 'Noto Sans KR',sans-serif;}
+html, body{margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6, p{margin: 0;}
+ul, ol{margin: 0; padding: 0; list-style: none;}
+a, a:hover{text-decoration: none;}
+body {
+font-family: Arial, sans-serif;
+line-height: 1.6;
+}
+:root {
+--nav-color: #fafafa; /* The default color of the main navmenu links */
+--nav-hover-color: #C686D0; /* Applied to main navmenu links when they are hovered over or active */
+--nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
+--nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+--nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
+--nav-dropdown-hover-color: #18d26e; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+color: var(--nav-hover-color);
+}
+/* styles.css */
+.notice-section {
+padding: 30px;
+background: #DDC5E1;
+height: 100px;
+}
+.notice-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1320px;
+margin: auto;
+}
+body {
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f9f9f9;
+
+}
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+background-color: #d9c6e1;
+}
+.navbar .logo {
+font-size: 24px;
+font-weight: bold;
+color: #fff;
+}
+.navbar .nav-links {
+list-style: none;
+display: flex;
+gap: 15px;
+}
+.navbar .nav-links li a {
+text-decoration: none;
+color: #333;
+font-weight: bold;
+}
+
+/* 게시판 컨테이너 */
+.board-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* 추가된 부분 */
+}
+
+/* 제목 영역 */
+.board-header {
+    margin-bottom: 10px;
+    display: flex; /* 플렉스 박스 활성화 */
+    align-items: center; /* 요소를 수직 중앙 정렬 */
+    gap: 10px; /* 글자와 이미지 사이 간격 */
+}
+
+.board-header h1 {
+    font-size: 30px;
+    color: #4b2d68;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+}
+
+.table-container img {
+    /* width: 50px;
+    height: 40px; */
+    margin-top: 0px;
+    margin-right: 100px;
+}
+
+.header-line {
+    width: 100%;
+    height: 2px;
+    background-color: #4b2d68;
+    margin-top: -3px;
+}
+
+/* 폼 영역 */
+.board-form {
+    margin-top: 10px;
+}
+
+.form-group {
+	margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 300px;
+}
+
+/* 버튼 스타일 */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button.cancel {
+    background-color: #ddd;
+    color: #333;
+}
+
+button.submit {
+    background-color: #F96366;
+    color: #fff;
+}
+
+/* 공지 사항 */
+.notice {
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+
+/***********************************/
+/* Content Section */
+.content-section {
+    display: flex;
+    padding: 30px 300px;
+    background: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 0px 20px 30px 0px;
+    background: #ffffff;
+
+}
+
+.sidebar .exam-date {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    padding: 18px 0 18px 0;
+    color: #000;
+}
+
+ .sidebar .exam-date .days {
+     color: red;
+     font-weight: bold;
+ }
+
+ .sidebar .menu {
+     list-style-type: none;
+     padding-left: 0; 
+ }
+
+ .sidebar .menu li {
+   margin-bottom: 18px;
+   border-bottom: 1px solid #000;
+   padding-bottom: 18px;
+   text-align: center;
+ }
+
+
+ .sidebar .menu a:first-child {
+     text-decoration: none;
+     font-size: 18px;
+     font-weight: 900;
+     margin: 0;
+ }
+
+ .sidebar .menu a {
+     text-decoration: none;
+     color: black;
+     font-size: 15px;
+ }
+ .sidebar .menu a:nth-child(3) {
+   margin-top: 6px;
+   display: inline-block;
+ }
+
+ .sidebar .menu .highlight {
+     color: #10c062;
+     font-weight: bold;
+ }
+
+ .table-container {
+     width: 80%;
+     padding: 10px;
+     color: #000;
+ }
+
+ .table-container .subTitle {
+     margin-top: 12px;
+     margin-bottom: 18px;
+     font-size: 25px;
+     margin-left: 10px;
+     color: #000;
+     font-weight: bolder;
+ }
+ 
+  .filebox .upload-name {
+	width: 84.3%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    outline:none;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 44px;
+    margin-left: 10px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+/* 에디터 영역 CSS */
+.form-group-editor {
+	margin-top: 20px;
+	background-color: white;
+	margin-bottom: 20px;
+}
+
+
+.ql-editor {
+	min-height: 500px;
+	color: black;
+}

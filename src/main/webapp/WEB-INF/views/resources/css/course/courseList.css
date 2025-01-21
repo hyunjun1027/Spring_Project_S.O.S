@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+/* 강의 리스트 CSS */
+.lecture-list-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 전체선택, 다운로드 버튼 */
+/* 전체 컨테이너 스타일 */
+.list-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 좌우 정렬 */
+    font-size: 14px;
+    border-bottom: 2px solid black;
+    margin-top: 50px;
+}
+
+/* 왼쪽 그룹 스타일 */
+.left-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 다운로드 버튼 스타일 */
+.download-action {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+/* 강의등록 버튼 스타일 */
+.register-action {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.register-action:hover {
+    background-color: #45a049;
+}
+/* 강의 리스트 아이템 */
+.lecture-item {
+    display: grid;
+    grid-template-columns: 40px 3fr 2fr 1fr 1fr 40px;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 10px;
+}
+
+.lecture-checkbox {
+    text-align: center;
+}
+
+.lecture-info-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.lecture-list-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.lecture-meta {
+    font-size: 12px;
+    color: #666;
+}
+
+.lecture-status {
+    display: flex;
+    flex-direction: column; /* 세로 방향 정렬 */
+    gap: 5px; /* 버튼 간격 추가 */
+    align-items: center;
+}
+
+.streaming-btn,
+.download-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid #aaa;
+    background-color: #f9fff9;
+    color: #007b00;
+    cursor: default !important;
+    width: 100px;
+}
+
+.lecture-progress {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.lecture-date {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.lecture-play {
+    text-align: center;
+}
+
+.play-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/***모달창 띄우기***/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+  overflow: auto;
+}
+
+/* 모달창 본체 */
+.modal-content {
+  background-color: #fff;
+  width: 90%; /* 가로 너비를 화면의 90%로 설정 */
+  max-width: 1000px; /* 최대 너비 설정 */
+  margin: 3% auto; /* 화면 상단과 여백 조정 */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out; /* 부드러운 등장 효과 */
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 모달창 타이틀 */
+.modal-title {
+  margin: 0;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  color:#000000;
+}
+
+/* 입력 섹션 스타일 */
+.modal-section {
+  margin: 15px 0;
+}
+
+.modal-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.modal-input:focus,
+.modal-textarea:focus {
+  border-color: #a084e8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(160, 132, 232, 0.5);
+}
+
+
+/* 검색 버튼이 있는 입력창 */
+.input-with-search {
+  display: flex;
+}
+
+.input-with-search .modal-input {
+  flex: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-btn {
+  border: none;
+  background-color: #a084e8;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.search-btn:hover {
+  background-color: #8a6fd6;
+}
+
+/* 텍스트 영역 스타일 */
+.modal-textarea {
+  height: 300px;
+  resize: none;
+}
+
+/* 버튼 스타일 */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 10px 25px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.add-btn {
+  background-color: #a084e8;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #8a6fd6;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #a0a0a0;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

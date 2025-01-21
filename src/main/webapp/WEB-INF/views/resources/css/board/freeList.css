@@ -1,0 +1,448 @@
+@charset "UTF-8";
+
+/* Reset */
+*{box-sizing: border-box; font-family: 'Orbitron', 'Noto Sans KR',sans-serif;}
+html, body{margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6, p{margin: 0;}
+ul, ol{margin: 0; padding: 0; list-style: none;}
+a, a:hover{text-decoration: none;}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+   background-color: #fff;
+}
+
+:root {
+  --nav-color: #fafafa;  /* The default color of the main navmenu links */
+  --nav-hover-color: #C686D0; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #C686D0; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+    color: var(--nav-hover-color);
+}
+
+
+/* Notice Section */
+ .notice-section {
+    padding: 30px;
+    background: #DDC5E1;
+    height: 500px;
+
+}
+
+.notice-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1320px;
+    margin: auto;
+}
+
+.notice-text {
+    flex: 1;
+    margin-left: 100px;
+    margin-top: 170px;
+    transform: translateY(-46px);
+
+}
+
+.notice-text .mainTitle {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.notice-text .mainContent {
+    font-size: 30px;
+    color: #fff;
+    margin-top: -8px;
+} 
+
+.notice-image img {
+    width: 480px;
+    height: 400px;
+    margin-top: 50px;
+    margin-right: 100px;
+    animation: moveUpDownReverse 2.5s infinite alternate ease-in-out;
+    object-fit: contain;
+}
+
+@keyframes moveUpDownReverse {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Content Section */
+.content-section {
+    display: flex;
+    padding: 30px 300px;
+    background: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 0px 20px 30px 0px;
+    background: #ffffff;
+
+}
+
+.sidebar .exam-date {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    padding: 18px 0 18px 0;
+    color: #000;
+}
+
+ .sidebar .exam-date .days {
+     color: red;
+     font-weight: bold;
+ }
+
+ .sidebar .menu {
+     list-style-type: none;
+     padding-left: 0; 
+ }
+
+ .sidebar .menu li {
+   margin-bottom: 18px;
+   border-bottom: 1px solid #000;
+   padding-bottom: 18px;
+   text-align: center;
+ }
+
+
+ .sidebar .menu a:first-child {
+     text-decoration: none;
+     font-size: 18px;
+     font-weight: 900;
+     margin: 0;
+ }
+ .sidebar .menu a {
+     text-decoration: none;
+     color: black;
+     font-size: 15px;
+ }
+ .sidebar .menu a:nth-child(3) {
+   margin-top: 6px;
+   display: inline-block;
+ }
+
+ .sidebar .menu .highlight {
+     color: #10c062;
+     font-weight: bold;
+ }
+
+ .table-container {
+     width: 80%;
+     padding: 10px;
+     color: #000;
+ }
+
+ .table-container .subTitle {
+     margin-top: 12px;
+     margin-bottom: 18px;
+     font-size: 22px;
+     margin-left: 10px;
+     color: #000;
+     font-weight: bolder;
+ }
+
+.table-search {
+   width: 100%;
+   border-collapse: collapse;
+    margin-bottom: 20px;
+    border-color: inherit;
+}
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+ }
+
+ table th, table td {
+     padding: 10px;
+   text-align: center;
+   font-size: 0.9rem;
+   border-bottom: 1px solid #ddd;
+   border-left: none;
+   border-right: none;
+ }
+
+table th {
+    background: #f0f0f0;
+    font-weight: bold;
+    width: 6%
+}
+table th:nth-child(4) {
+    width: 24%
+}
+  
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 요소 간의 간격 */
+    margin-top: 70px;
+    
+}
+
+
+.pagination-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-size: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+	
+}
+
+
+.pagination-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-radius: 4px; /* 둥근 모서리 */
+}
+
+.pagination-number {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.pagination-number.active {
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold;
+    background-color: #f0e3ff; /* 활성화된 배경색 */
+    color: #fff; /* 글자 색상 변경 */
+    padding: 5px 11px; /* 패딩 추가 */
+    border: 1px solid #f0e3ff; /* 경계선 추가 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-separator {
+    font-size: 14px;
+    color: #aaa;
+}
+
+
+/*네비 투명*/
+.header{
+background-color: rgba(0, 0, 0, 0);
+}
+
+/*상단검색*/
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.freeboard-container {
+   background-color: #F4F1F1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 13px 0px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 58px 10px 48px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px 24px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: -35px;
+}
+
+.search-button {
+  background: #ddd;
+  padding: 20px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.category-button {
+  padding: 12px 52px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-button.active {
+  background: #f66;
+  color: #fff;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+  margin-bottom: 5px;
+}
+
+.sorting-options {
+  display: flex;
+}
+
+.sort-button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+.view-options {
+   background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.sort-button.active {
+  background: #f66;
+  color: #fff;
+}
+
+/*글쓰기*/
+.freeWrite-container {
+  display: flex;
+  align-items: center;
+}
+
+.free-write-button {
+  background: #f66;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+
+
+.search-section .btnSearch {
+    transform: translate(-70%, -4%);
+    padding: 2px;
+    border: none;
+    background-color: #fff;
+    color: white;
+    border-radius: 100px;
+}
+
+.modal-game {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5); 
+	display: none; /* 처음에는 보이지 않도록 설정 */
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	transition: transform 0.5s ease; 
+}
+
+.close-btn {
+	position: absolute;
+	top: 1px;
+	right: 10px;
+	font-size: 40px;
+	color: #333;
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+.close-btn:hover {
+	color: #ff0000;
+}
+
+.game-body {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #c0c0c0;
+}
+
+.game-container {
+    text-align: center;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+button {
+    margin: 5px;
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}

@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+/* 내가 쓴 글 컨테이너 */
+.contentBoardContainer {
+margin-top: 65px;
+padding: 20px;
+background-color: #1e1e1e00;
+border-radius: 15px;
+color: #fff;
+}
+/* 제목 및 통계 정보 */
+.board-header {
+margin-bottom: 19px;
+border-bottom: 2px solid #fbfbfb;
+padding-bottom: 25px;
+}
+.first-title {
+margin-bottom: 15px; /* 제목 아래 간격 추가 */
+}
+.board-title {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 10px; /* 줄바꿈 여백 */
+}
+.board-stats {
+display: flex; /* Flexbox로 내부 요소 배치 */
+align-items: center; /* 세로 중앙 정렬 */
+justify-content: space-between; /* 양쪽 끝 정렬: "총 게시글" 왼쪽, 버튼 오른쪽 */
+gap: 10px; /* 내부 요소 간의 간격 */
+}
+.stats-highlight {
+color: #339b21;
+font-weight: bold;
+}
+.triangle {
+color: #000000;
+border-radius: 15px;
+}
+/*드롭박스*/
+.dropdown-btn {
+margin-left: auto; /* 버튼을 오른쪽 끝으로 밀기 */
+color: #ffffff;
+font-size: 16px;
+border: 1px solid #5f5757;
+border-radius: 5px;
+padding: 5px 20px;
+background-color: #5f5757;
+cursor: pointer;
+}
+.dropdown-menu {
+position: absolute; /* 드롭다운 메뉴의 위치를 절대값으로 */
+right: 0; /* 부모 기준으로 오른쪽 정렬 */
+top: 100%; /* 버튼 바로 아래에 위치 */
+list-style: none;
+padding: 0;
+margin: 5px 0 0 0;
+background-color: #ffffff;
+border: 1px solid #ddd;
+z-index: 10;
+display: none; /* 기본적으로 숨김 */
+}
+.dropdown-menu li {
+padding: 10px 15px;
+font-size: 14px;
+color: #333;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+.dropdown-menu li:hover {
+background-color: #f0f0f0;
+}
+/* 게시글 테이블 */
+.board-table thead {
+font-size: 21px; /* 헤더 글자 크기 */
+font-weight: bold; /* 굵은 글자 */
+color: #fff; /* 글자 색상 */
+background-color: #44444400; /* 헤더 배경색 */
+}
+.board-content {
+margin-top: -10px;
+}
+.board-table {
+width: 100%;
+border-collapse: collapse;
+background-color: #2a2a2a00;
+border-radius: 0px;
+overflow: hidden;
+}
+.board-table th,
+.board-table td {
+padding: 10px;
+text-align: center;
+border-bottom: 1px solid #666;
+}
+.board-table tbody tr:hover {
+background-color: #333;
+}
+.board-table input[type="checkbox"] {
+transform: scale(1.5); /* 체크박스 크기 조정 */
+margin: 0 5px; /* 좌우 여백 추가 */
+cursor: pointer; /* 마우스 커서 스타일 */
+}
+/* 푸터 버튼과 페이지네이션 */
+.board-footer {
+display: flex;
+justify-content: flex-end; /* 삭제 버튼을 오른쪽 끝으로 */
+margin-top: 20px;
+}
+/* 전체 선택 체크박스 스타일 */
+.choose-all {
+margin-left: 40px;
+}
+.select-all-container {
+display: flex;
+align-items: center; /* 텍스트와 체크박스를 세로로 중앙 정렬 */
+gap: 7px; /* 체크박스와 텍스트 간의 간격 */
+}
+.select-all-container input[type="checkbox"] {
+transform: scale(1.5); /* 체크박스 크기 확대 */
+cursor: pointer;
+}
+.delete-btn {
+background-color: #ffffff;
+color: #000000;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+margin-left: auto; /* 오른쪽 끝으로 밀기 */
+}
+.delete-btn:hover {
+background-color: #e60000;
+}
+.pagination {
+display: flex; /* Flexbox로 정렬 */
+justify-content: center; /* 중앙 정렬 */
+gap: 8px; /* 버튼 간 간격 */
+margin-top: 10px; /* 삭제 버튼과의 간격 */
+}
+.page-btn {
+background-color: #339b21;
+color: #fff;
+border: none;
+/*padding: 5px 10px;*/
+/*border-radius: 5px;*/
+cursor: pointer;
+transition: background-color 0.3s;
+}
+.page-btn:hover {
+background-color: #666;
+}

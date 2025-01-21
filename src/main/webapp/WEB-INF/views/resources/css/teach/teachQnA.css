@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/* 테이블 CSS */
+.notice-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+     border-top: 2px solid #000;
+     color: black;
+ }
+
+ .notice-table th, .notice-table td {
+   padding: 10px;
+   text-align: center;
+   font-size: 0.9rem;
+   border-bottom: 1px solid #ddd; 
+   border-left: none;
+   border-right: none;
+ }
+
+ .notice-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+    width: 6%;
+}
+
+ .notice-table th:nth-child(2) {
+    width: 20 %
+}
+
+/* 답글 CSS */
+.reply-write {
+    background-color: rgba(116, 170, 182, 0.14); /* 배경색에만 투명도 적용 */
+}
+
+.reply-icon img {
+    width: 16px; /* 이미지 너비 */
+    height: 16px; /* 이미지 높이 */
+    vertical-align: middle; /* 텍스트와 수직 정렬 */
+    margin-right: 5px; /* 이미지와 텍스트 간격 */
+}
+
+.total-post {
+    display: flex; /* Flexbox를 사용하여 정렬 */
+    justify-content: space-between; /* 양쪽 끝으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 15px;
+}
+
+/*글쓰기*/
+.freeWrite-container {
+  display: flex;
+  align-items: center;
+}
+
+.free-write-button {
+  background: #f66;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* 페이징 CSS */ 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 요소 간의 간격 */
+    margin-top: 30px;
+    
+}
+
+
+.pagination-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-size: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+	
+}
+
+
+.pagination-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-radius: 4px; /* 둥근 모서리 */
+}
+
+.pagination-number {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.pagination-number.active {
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold;
+    background-color: #9175c7; /* 활성화된 배경색 */
+    color: #fff; /* 글자 색상 변경 */
+    padding: 5px 11px; /* 패딩 추가 */
+    border: 1px solid #9175c7; /* 경계선 추가 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-separator {
+    font-size: 14px;
+    color: #aaa;
+}

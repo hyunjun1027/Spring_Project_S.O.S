@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+	padding-bottom: 20px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+td {
+    padding: 8px 0px;
+    text-align: center;
+}
+
+th, td {
+	border-bottom: 1px solid #444; /* 아래쪽 경계선 추가 */
+}
+
+.total-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+.btn-pay {
+    padding: 5px 15px;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex; /* flexbox를 사용하여 요소를 배치 */
+    flex-direction: column; /* 요소들을 세로로 배치 */
+    gap: 10px; /* 버튼 사이의 간격 조정 */
+    align-items: center; 
+}
+
+.btn-select-delete {
+	padding: 5px 10px;
+    background-color: D9D9D9;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    width: 20px;  /* 체크박스 너비 */
+    height: 20px; /* 체크박스 높이 */
+    cursor: pointer; /* 마우스 커서 변경 */
+    /* 다음은 기본 체크박스 스타일을 없애는 방법입니다. */
+    -webkit-appearance: none; /* 크롬, 사파리 */
+    -moz-appearance: none; /* 파이어폭스 */
+    appearance: none; /* 기본 스타일 제거 */
+    border: 2px solid #ccc; /* 테두리 추가 */
+    border-radius: 3px; /* 모서리 둥글게 */
+    outline: none; /* 포커스 시 테두리 제거 */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #10c062; /* 체크된 상태의 배경색 */
+    border-color: #10c062; /* 체크된 상태의 테두리색 */
+}
+
+.btnContainer {
+	display : flex;
+	justify-content: flex-end;
+	width: 100%;	
+}
+
+.btnContainer>.inputBtn {
+	margin: 20px 0 10px 10px;
+	width: 150px;
+	height: 45px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.button-container>.inputBtn {
+	width: 90px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	font-size: 12px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.btnContainer>#selectOrderBtn {
+	background: #2c628b;
+}
+
+.btnContainer>#allOrderBtn {
+	background: #d95353;
+}
+
+.button-container>#paymentBtn {
+	background: #f35252;
+}
+
+.button-container>#deleteBtn {
+	color: #333;
+	background: #f7dec9;
+}
+
+.btnContainer>.inputBtn:after, .button-container>.inputBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+.btnContainer>#selectOrderBtn:after {
+	background: #1f4c6f;
+}
+
+.btnContainer>#allOrderBtn:after {
+	background: #b92727;
+}
+
+.button-container>#paymentBtn:after {
+	background: #e52e2e;
+}
+
+.button-container>#deleteBtn:after {
+	color: #333;
+	background: #f0c29d;
+}
+
+.btnContainer>.inputBtn:hover, .button-container>.inputBtn:hover {
+	color: #f7f7f7;
+}
+
+.btnContainer>.inputBtn:hover:after, .button-container>.inputBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.btnContainer>.inputBtn:active, .button-container>.inputBtn:active {
+	top: 2px;
+}
+
+.select-all {
+	margin: 25px 0 25px 30px;;
+}
+
+/* 결제금액 알려주는 CSS */
+.pay-container {
+    display: flex; /* Flexbox 활성화 */
+    justify-content: space-between; /* 아이템 간의 간격을 균등하게 배분 */
+    align-items: center; /* 세로 정렬 */
+    border-top: 1px solid gray; /* 상단 회색 선 */
+    border-bottom: 1px solid gray; /* 하단 회색 선 */
+}
+
+.pay-container div {
+    flex: 1; /* 각 div가 동일한 비율로 공간을 차지하도록 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    position: relative; /* 자식 요소의 위치를 기준으로 설정 */
+    padding: 30px 0 25px; /* 내부 패딩 추가 */
+    box-sizing: border-box; /* 패딩과 보더를 포함한 크기 설정 */
+}
+
+.pay-container div:not(:last-child)::after {
+    content: ""; /* 빈 요소로 선을 그림 */
+    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+    top: 0; /* 상단부터 시작 */
+    right: 0; /* 오른쪽에 위치 */
+    width: 1px; /* 선의 두께 */
+    height: 100%; /* 부모 높이에 맞춤 */
+    background-color: #444; /* 선의 색상 */
+}
+
+.pay-container div h3 {
+	font-size: 20px;
+	margin: 0;
+}
+
+.pay, .pay-green {
+	font-size: 25px;
+}
+
+.pay-green {
+	color: var(--nav-hover-color);
+}
+
+
+

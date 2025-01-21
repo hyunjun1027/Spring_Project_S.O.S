@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.sist.web.dao.BookDao">
+
+<resultMap type="com.sist.web.model.Book" id="bookResultMap">
+    <id column="BOOK_SEQ" property="bookSeq" />
+    <result column="BOOK_TITLE" property="bookTitle" />
+    <result column="BOOK_INFO" property="bookInfo" />
+    <result column="BOOK_AUTH" property="bookAuth" />
+    <result column="BOOK_PUBLISHER" property="bookPublisher" />
+    <result column="BOOK_PRICE" property="bookPrice" />
+    <result column="BOOK_PAY_PRICE" property="bookPayPrice" />
+    <result column="INVEN_QTT" property="invenQtt" />
+    <result column="REG_DATE" property="regDate" />
+    <result column="ISSUE_DATE" property="issueDate" />
+    <result column="BOOK_STATUS" property="bookStatus" />
+    <result column="CLASS_CODE" property="classCode" />
+</resultMap>
+
+<select id="bookListSelect" parameterType="com.sist.web.model.Book" resultMap="bookResultMap">
+SELECT  NUM,
+        BOOK_SEQ,
+        BOOK_TITLE,
+        BOOK_INFO,
+        BOOK_AUTH,
+        BOOK_PUBLISHER,
+        BOOK_PRICE,
+        BOOK_PAY_PRICE,
+        REG_DATE,
+        ISSUE_DATE,
+        INVEN_QTT,
+        BOOK_STATUS,
+        CLASS_CODE
+FROM    (SELECT  ROWNUM NUM,
+                BOOK_SEQ,
+                BOOK_TITLE,
+                BOOK_INFO,
+                BOOK_AUTH,
+                BOOK_PUBLISHER,
+                BOOK_PRICE,
+                BOOK_PAY_PRICE,
+                REG_DATE,
+                ISSUE_DATE,
+                INVEN_QTT,
+                BOOK_STATUS,
+                CLASS_CODE
+        FROM    (SELECT  NVL(BOOK_SEQ, '') BOOK_SEQ,
+                        NVL(BOOK_TITLE, '') BOOK_TITLE,
+                        NVL(BOOK_INFO, '') BOOK_INFO,
+                        NVL(BOOK_AUTH, '') BOOK_AUTH,
+                        NVL(BOOK_PUBLISHER, '') BOOK_PUBLISHER,
+                        NVL(BOOK_PRICE, '') BOOK_PRICE,
+                        NVL(BOOK_PAY_PRICE, '') BOOK_PAY_PRICE,
+                        NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE,
+                        NVL(TO_CHAR(ISSUE_DATE, 'YY.MM.DD'), '') ISSUE_DATE,
+                        NVL(INVEN_QTT, '') INVEN_QTT,
+                        NVL(BOOK_STATUS, 'Y') BOOK_STATUS,
+                        NVL(CLASS_CODE, '') CLASS_CODE
+                FROM    EDU_BOOK
+            	WHERE   CLASS_CODE = #{classCode}
+
+                
+                
+			<if test="searchValue != null and searchValue != ''">
+			    AND BOOK_TITLE LIKE '%' || #{searchValue} ||'%'
+			</if>
+			
+			
+			<if test='searchType != null and searchType != ""'>
+		    	<choose>     
+		    		<when test='searchType == "1"'>       
+		                ORDER BY ISSUE_DATE DESC))
+		            </when>
+		            <when test='searchType == "2"'>     
+		                ORDER BY BOOK_PRICE ASC))
+		            </when>
+
+		    	</choose>
+	    	</if>  
+	    	
+	    	<if test='searchType == null or searchType == ""' >
+	    		ORDER BY ISSUE_DATE DESC))
+	    	</if>
+	    	
+			
+WHERE NUM <![CDATA[>=]]> #{startRow}
+AND NUM <![CDATA[<=]]> #{endRow}
+
+</select>
+
+<select id="bookSelect" parameterType="map" resultMap="bookResultMap">
+SELECT  NVL(BOOK_SEQ, '') BOOK_SEQ,
+        NVL(BOOK_TITLE, '') BOOK_TITLE,
+        NVL(BOOK_INFO, '') BOOK_INFO,
+        NVL(BOOK_AUTH, '') BOOK_AUTH,
+        NVL(BOOK_PUBLISHER, '') BOOK_PUBLISHER,
+        NVL(BOOK_PRICE, '') BOOK_PRICE,
+        NVL(BOOK_PAY_PRICE, '') BOOK_PAY_PRICE,
+        NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE,
+        NVL(TO_CHAR(ISSUE_DATE, 'YY.MM.DD'), '') ISSUE_DATE,
+        NVL(INVEN_QTT, '') INVEN_QTT,
+        NVL(BOOK_STATUS, 'Y') BOOK_STATUS,
+        NVL(CLASS_CODE, '') CLASS_CODE
+FROM    EDU_BOOK
+WHERE   BOOK_SEQ = #{bookSeq}
+<if test='classCode != ""'>
+AND		CLASS_CODE = #{classCode}
+</if>
+
+</select>
+
+<select id="bookListCount" parameterType="com.sist.web.model.Book" resultType = "int">
+	SELECT COUNT(BOOK_SEQ) AS CNT
+	FROM   EDU_BOOK
+	WHERE  CLASS_CODE = #{classCode}
+	
+	<if test="searchValue != null and searchValue != ''">
+	    AND BOOK_TITLE LIKE '%' || #{searchValue} ||'%'
+	</if>
+
+
+</select>
+
+<!-- index 에서 교재 불러오기 -->
+<select id="bookIndexSelect" parameterType="long" resultMap="bookResultMap">
+SELECT  NVL(BOOK_SEQ, '') BOOK_SEQ,
+        NVL(BOOK_TITLE, '') BOOK_TITLE,
+        NVL(BOOK_INFO, '') BOOK_INFO,
+        NVL(BOOK_AUTH, '') BOOK_AUTH,
+        NVL(BOOK_PUBLISHER, '') BOOK_PUBLISHER,
+        NVL(BOOK_PRICE, '') BOOK_PRICE,
+        NVL(BOOK_PAY_PRICE, '') BOOK_PAY_PRICE,
+        NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE,
+        NVL(TO_CHAR(ISSUE_DATE, 'YY.MM.DD'), '') ISSUE_DATE,
+        NVL(INVEN_QTT, '') INVEN_QTT,
+        NVL(BOOK_STATUS, 'Y') BOOK_STATUS,
+        NVL(CLASS_CODE, '') CLASS_CODE
+FROM    EDU_BOOK
+WHERE   BOOK_SEQ = #{bookSeq}
+
+
+</select>
+
+<!-- 강좌소개 페이지에서 교재 불러오기 -->
+<select id="lectureBookSelect" parameterType="long" resultMap="bookResultMap">
+	SELECT B.BOOK_SEQ,
+	       NVL(B.BOOK_TITLE,'') AS BOOK_TITLE,
+	       NVL(B.BOOK_INFO,'') AS BOOK_INFO,
+	       NVL(B.BOOK_AUTH,'') AS BOOK_AUTH,
+	       NVL(B.BOOK_PUBLISHER,'') AS BOOK_PUBLISHER,
+	       NVL(B.BOOK_PRICE,0) AS BOOK_PRICE,
+	       NVL(B.BOOK_PAY_PRICE,0) AS BOOK_PAY_PRICE,
+	       NVL(TO_CHAR(B.REG_DATE,'YYYY.MM.DD HH24:MI:SS'),'') AS REG_DATE,
+	       NVL(TO_CHAR(B.ISSUE_DATE,'YYYY.MM.DD HH24:MI:SS'),'') AS ISSUE_DATE,
+	       NVL(B.INVEN_QTT,0) AS INVEN_QTT,
+	       NVL(B.BOOK_STATUS,'') AS BOOK_STATUS,
+	       NVL(B.CLASS_CODE,0) AS CLASS_CODE
+	  FROM EDU_BOOK B, EDU_COURSE C
+	 WHERE C.COURSE_CODE = #{value}
+	   AND B.BOOK_SEQ = C.BOOK_SEQ
+</select>
+
+
+
+
+<!--  책 재고 관리 -->
+<update id="bookQttMgr" parameterType="com.sist.web.model.Book">
+	UPDATE
+	    EDU_BOOK
+	SET
+<if test='qttMgrChk != "" and qttMgrChk != null and qttMgrChk == "1"'>	
+	    INVEN_QTT = INVEN_QTT - #{qttVal}
+</if>
+<if test='qttMgrChk != "" and qttMgrChk != null and qttMgrChk == "2"'>	    
+	    INVEN_QTT = INVEN_QTT + #{qttVal}
+</if>
+	WHERE
+	    BOOK_SEQ = #{bookSeq}
+</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

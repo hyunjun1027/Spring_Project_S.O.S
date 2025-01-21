@@ -1,0 +1,217 @@
+@charset "UTF-8";
+/*=====================================================
+	paymentHistoryDetail css
+======================================================*/
+.boardContainer .paymentTopContainer {
+	background: rgba(40,40,40,0.7);
+	font-size: 17px;
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+	padding: 35px 0 30px;
+	border: none;
+	border-radius: 50px;
+}
+
+.boardContainer .paymentTopContainer .topInfo {
+	display: flex;
+	flex-basis: calc(50%);
+	justify-content: center;
+}
+
+.boardContainer .paymentTopContainer .topInfo>span {
+	margin-top: -7px;
+	margin-left: 20px;
+}
+
+.boardContainer .paymentTopContainer .orderSeq>span {
+	font-size: 23px;
+}
+
+.boardContainer .paymentTopContainer .orderStatus>span {
+	font-size: 23px;
+	color: var(--accent-color);
+}
+
+.boardContainer .title-div {
+	border: none;
+}
+
+.boardContainer .title-div .subTitle {
+	margin-top: 50px;
+}
+
+.boardContainer .paymentInfo>div {
+	display: flex;
+	margin: 20px 0;
+	padding: 15px 0;
+	justify-content: center;
+	border-top: 3px solid #666;
+	border-bottom: 3px solid #666;
+	font-size: 19px;
+}
+
+.boardContainer .paymentInfo>div>.payment-Item {
+	text-align: center;
+	display: flex;
+	flex-basis: calc(33%);
+	flex-direction: column;
+	justify-content: center;
+	padding: 15px 0;
+}
+
+.boardContainer .paymentInfo>div>.payment-Item:first-child,
+.boardContainer .paymentInfo>div>.payment-Item:nth-child(2) {
+	border-right: 1px solid #666;
+}
+
+.boardContainer .paymentInfo>div>.payment-Item>span {
+	font-size: 22px;
+	font-weight: 550;
+}
+
+.boardContainer .paymentInfo>div>.payment-Item:last-child>span {
+	color: var(--accent-color);
+}
+
+.boardContainer .orderInfo table {
+	width: 100%;
+	text-align: center;
+	border-top: 3px solid #666;
+	border-bottom: 3px solid #666;
+	border-collapse: collapse;
+}
+
+.boardContainer .orderInfo table>thead>tr>th {
+	padding: 15px 0;
+	font-size: 20px;
+}
+
+.boardContainer .orderInfo table>tbody>tr {
+	background: #444;
+	font-size: 19px;
+	transition: 0.3s;
+}
+
+.boardContainer .orderInfo table>tbody>tr:hover {
+	background: #555;
+	transition: 0.3s;
+}
+
+.boardContainer .orderInfo table>tbody>tr>td {
+	border-top: 3px solid #666;
+	padding: 30px 0;
+}
+
+.boardContainer .shippingInfo table {
+	width: 100%;
+	border-bottom: 3px solid #666;
+	border-collapse: collapse;
+}
+
+.boardContainer .shippingInfo table>tbody>tr {
+	background: #333;
+	font-size: 17px;
+	transition: 0.3s;
+}
+
+.boardContainer .shippingInfo table>tbody>tr:hover {
+	background: #3e3e3e;
+	transition: 0.3s;
+}
+
+.boardContainer .shippingInfo table>tbody>tr>td {
+	border-top: 3px solid #666;
+	padding: 15px 20px;
+}
+
+.btnContainer {
+	display : flex;
+	justify-content: center;
+	width: 100%;	
+}
+
+.btnContainer>.inputBtn {
+	margin: 50px 10px;
+	width: 300px;
+	height: 38px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.btnContainer>#breakDownBtn {
+	background: var(--accent-color);
+}
+
+.btnContainer>#myClassBtn {
+	background: #4A5979;
+}
+
+.btnContainer>.inputBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+.btnContainer>#breakDownBtn:after {
+	background: #05ad53;
+}
+
+.btnContainer>#myClassBtn:after {
+	background: #324161;
+}
+
+.btnContainer>.inputBtn:hover {
+	color: #f7f7f7;
+}
+
+.btnContainer>.inputBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.btnContainer>.inputBtn:active {
+	top: 2px;
+}
+
+/*=====================================================
+	paymentSuccess css
+======================================================*/
+.boardContainer .paymentSTopContainer {
+	background: rgba(40,40,40,0.7);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	margin: 18px 0;
+	padding: 50px 0;
+	border: none;
+}
+
+.boardContainer .paymentSTopContainer h2 {
+	font-weight: 600;
+}
+
+.boardContainer .paymentSTopContainer .topInfo {
+	margin-top: 15px;
+	font-size: 22px;
+}
+
+.boardContainer .paymentSTopContainer .topInfo span {
+	margin-left: 20px;
+	color: var(--accent-color);
+}

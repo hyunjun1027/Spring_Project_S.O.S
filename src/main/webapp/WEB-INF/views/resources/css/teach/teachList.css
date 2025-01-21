@@ -1,0 +1,332 @@
+@charset "UTF-8";
+
+/* Reset */
+*{box-sizing: border-box; font-family: 'Orbitron', 'Noto Sans KR',sans-serif;}
+html, body{margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6, p{margin: 0;}
+ul, ol{margin: 0; padding: 0; list-style: none;}
+a, a:hover{text-decoration: none;}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+	background: white;
+}
+
+:root {
+  --nav-color: #fafafa;  /* The default color of the main navmenu links */
+  --nav-hover-color: #6851e5; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #18d26e; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+    color: var(--nav-hover-color);
+}
+
+/* Teach Section */
+ .notice-section {
+    padding: 30px;
+	background: #b5aaf2;
+    height: 500px;
+
+}
+
+.notice-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1320px;
+    margin: auto;
+}
+
+.notice-text {
+    flex: 1;
+    margin-left: 100px;
+    margin-top: 170px;
+    transform: translateY(-46px);
+
+}
+
+.notice-text .mainTitle {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.notice-text .mainContent {
+    font-size: 30px;
+    color: #fff;
+    margin-top: -8px;
+}
+
+.notice-image img {
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+    margin-right: 100px;
+    animation: moveUpDownReverse 2.5s infinite alternate ease-in-out;
+    object-fit: contain;
+}
+
+@keyframes moveUpDownReverse {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Content Section */
+.content-section {
+    display: flex;
+    padding: 30px 300px;
+    background: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 0px 20px 30px 0px;
+    background: #ffffff;
+
+}
+
+.sidebar .exam-date {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    padding: 18px 0 18px 0;
+    color: #000;
+}
+
+ .sidebar .exam-date .days {
+     color: red;
+     font-weight: bold;
+ }
+
+ .sidebar .menu {
+     list-style-type: none;
+     padding-left: 0; 
+ }
+
+ .sidebar .menu li {
+   margin-bottom: 15px;
+   border-bottom: 1px solid #000;
+   padding-bottom: 15px;
+   text-align: center;
+ }
+
+
+ .sidebar .menu a:first-child {
+     text-decoration: none;
+     font-size: 18px;
+     font-weight: 900;
+     margin: 0;
+ }
+ .sidebar .menu a {
+     text-decoration: none;
+     color: #222;
+     font-size: 15px;
+ }
+ .sidebar .menu a:nth-child(3) {
+   margin-top: 6px;
+   display: inline-block;
+ }
+
+.sidebar .menu .highlight {
+	color: var(--accent-color);
+	border: none;
+}
+
+.sidebar .menu .highlight div {
+	color: #222;
+	margin-bottom: 15px;
+	padding-bottom: 18px;
+	font-weight: 600;
+	font-size: 23px;
+}
+
+.table-container {
+     width: 80%;
+     padding: 10px;
+     color: #000;
+ }
+
+ .table-container .subTitle {
+     margin-top: 12px;
+     margin-bottom: 17px;
+     font-size: 22px;
+     margin-left: 10px;
+     color: #000;
+     font-weight: bolder;
+ }
+
+ .notice-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-bottom: 100px;
+ }
+
+ .notice-table tbody tr {
+	background: #f6f6f6;
+	transition: 0.3s;
+ }
+
+ .notice-table tbody tr:hover {
+	background: #f0f0f0;
+	transition: 0.3s;
+ }
+
+ .notice-table tbody tr:hover .new-notice {
+	background: #7e96e6;
+	color: white;
+	transition: 0.2s;
+ }
+
+.notice-table td {
+	text-align: center;
+	font-size: 0.9rem;
+	border-top: 1px solid #ccc;
+	border-left: none;
+	border-right: none;
+ }
+
+.notice-table td:last-child {
+   padding: 15px 10px;
+   text-align: left;
+ }
+
+.notice-table th {
+    font-weight: bold;
+    width: 6%
+}
+
+.notice-table tbody tr:last-child td {
+   border-bottom: 1px solid #ccc;
+}
+
+.notice-table tbody tr td:nth-child(2) {
+	font-weight: 550;
+}
+ 
+.new-notice {
+	margin: auto;
+	padding: 3px;
+	width: 60%;
+	background: white;
+	color: #7e96e6;
+	border: 1px solid #7e96e6;
+	border-radius: 20px;
+	transition: 0.2s;
+}
+
+
+/* 선생님  CSS */
+.teach-container .teach-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 15px; /* 각 teach-item 간의 간격 */
+}
+
+.teach-container .teach-box .teach-item {
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* 내부 요소의 위치를 절대적으로 배치하기 위해 필요 */
+    width: calc(24% - 15px); /* 한 줄에 4개 배치되도록 너비 조정 */
+    height: 320px; /* teach-item의 높이 고정 */
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: background 0.2s;
+}
+
+.teach-container .teach-box .teach-item:hover {
+    background: #ddd;
+    transition: background 0.2s;
+}
+
+.teach-container .teach-box .teach-item span {
+    color: #666;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+
+.teach-container .teach-box .teach-item h4 {
+    color: #2e2e2e;
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: auto; /* 텍스트 영역을 위로 밀기 */
+}
+
+.teach-container .teach-box .teach-item img {
+    position: absolute; /* 위치 고정 */
+    bottom: 0; /* 아래 끝에 맞춤 */
+    right: 0; /* 오른쪽 끝에 맞춤 */
+    width: 140px; /* 이미지 크기 확대 */
+    height: 220px; /* 이미지 크기 확대 */
+    object-fit: cover; /* 이미지 비율 유지하며 박스에 맞춤 */
+}
+
+
+
+
+.teach-kind-cnt {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.teach-kind-cnt span {
+	color: red;
+}
+
+/*네비 투명*/
+.header{
+background-color: rgba(0, 0, 0, 0);
+}
+
+
+/*검색 하단*/
+.search-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 30px;
+   margin-bottom: 100px;
+}
+
+.form-select {
+    width: 10%;
+    margin-right: -4px;
+}
+
+.input-select {
+    width: 40%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.input-select input {
+    width: 90%; 
+}
+
+.input-select button {
+    transform: translate(-130%, -4%);
+    padding: 2px;
+    border: none;
+    background-color: #fff;
+    color: white;
+    border-radius: 100px;
+}
+
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.web.dao.PrevQueListDao">
+
+    <!-- 기출문제 게시판 리스트 resultMap -->
+    <resultMap type="com.sist.web.model.PrevQue" id="PrevQueListResultMap">  
+        <id column="EXAM_SEQ" property="examSeq" />
+        <result column="EXAM_TITLE" property="examTitle" />
+        <result column="EXAM_QCNT" property="examQcnt" />
+        <result column="CLASS_CODE" property="classCode" />
+        <result column="EXAM_TEST_FILE_NAME" property="examTestFileName" />
+        <result column="EXAM_ANS_FILE_NAME" property="examAnsFileName" />          
+    </resultMap>
+    
+    <!-- 어려움 or 쉬움 -->
+    <resultMap type="com.sist.web.model.PrevQue_Easy_Hard" id="PrevQueEasyHardResultMap">
+		<id column="EXAM_SEQ" property="examSeq" />
+		<result column="USER_ID" property="userId" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+	
+	
+	
+	<!--  기출문제 시퀀스 번호 먼저 조회 -->
+	<select id="seqSelect" resultType="long">
+		SELECT 
+    		SEQ_EDU_EXAM_SEQ.NEXTVAL EXAM_SEQ
+		FROM 
+		    DUAL
+	</select>
+	
+	<!--  기출문제 등록 -->
+	<insert id="prevQueInsert" parameterType="com.sist.web.model.PrevQue">
+		INSERT INTO EDU_EXAM (
+		    EXAM_SEQ,
+		    EXAM_TITLE,
+		    EXAM_QCNT,
+		    CLASS_CODE,
+		    EXAM_TEST_FILE_NAME,
+		    EXAM_ANS_FILE_NAME
+		) VALUES (
+		    #{examSeq},
+		    #{examTitle},
+		    #{examQcnt},
+		    #{classCode},
+		    #{examTestFileName},
+		    #{examAnsFileName}
+		)
+	</insert>
+	
+	<!--  기출문제 삭제 -->
+	<delete id="prevQueDelete" parameterType="long">
+		DELETE FROM EDU_EXAM
+		WHERE EXAM_SEQ = #{value}
+	</delete>
+	
+	
+    
+    <!-- 기출문제 게시글 리스트 -->
+    <select id="prevQueList" parameterType="com.sist.web.model.PrevQue" resultMap="PrevQueListResultMap">
+        SELECT EXAM_SEQ,
+               EXAM_TITLE,
+               EXAM_QCNT,
+               CLASS_CODE,
+               EXAM_TEST_FILE_NAME,
+               EXAM_ANS_FILE_NAME
+          FROM (SELECT ROWNUM AS RNUM,
+                       EXAM_SEQ,
+                       EXAM_TITLE,
+                       EXAM_QCNT,
+                       CLASS_CODE,
+                       EXAM_TEST_FILE_NAME,
+                       EXAM_ANS_FILE_NAME
+                  FROM (SELECT EXAM_SEQ,
+                               EXAM_TITLE,
+                               EXAM_QCNT,
+                               CLASS_CODE,
+                               EXAM_TEST_FILE_NAME,
+                               EXAM_ANS_FILE_NAME
+                          FROM EDU_EXAM
+                         WHERE CLASS_CODE = #{classCode}
+                            <if test="searchType != null and searchType != '' and searchValue != null and searchValue != ''">
+                           AND EXAM_TITLE LIKE '%' || #{searchValue} || '%'
+                            </if>
+                          ORDER BY EXAM_SEQ
+                            <choose>
+                              <when test="options == 2">ASC</when>
+                              <otherwise>DESC</otherwise>
+                            </choose>
+                       )
+                )
+		 WHERE RNUM <![CDATA[>=]]> #{startRow}
+		   AND RNUM <![CDATA[<=]]> #{endRow}
+    </select>
+    
+    <!-- 기출문제 하나 조회 -->
+	<select id="prevQueSelect" parameterType="long" resultMap="PrevQueListResultMap">
+	    SELECT EXAM_SEQ,
+	           EXAM_TITLE,
+	           EXAM_QCNT,
+	           CLASS_CODE,
+	           EXAM_TEST_FILE_NAME,
+	           EXAM_ANS_FILE_NAME
+	      FROM EDU_EXAM
+	     WHERE EXAM_SEQ = #{examSeq}
+	       <if test="searchType != null and searchType != '' and searchValue != null and searchValue != ''">
+	         <choose>
+	           <when test="searchType == '1'">
+	             AND EXAM_TITLE LIKE '%' || #{searchValue} || '%'
+	           </when>
+	           <when test="searchType == '2'">
+	             AND CLASS_CODE LIKE '%' || #{searchValue} || '%'
+	           </when>
+	         </choose>
+	       </if>
+	</select>
+    
+
+    <!-- 기출문제 총 게시물 수 -->
+    <select id="prevQueListCount" parameterType="com.sist.web.model.PrevQue" resultType="long">
+        SELECT NVL(COUNT(EXAM_SEQ), 0) AS CNT
+          FROM EDU_EXAM
+         WHERE CLASS_CODE = #{classCode}
+           <if test='searchType != null and searchType != "" and searchValue != null and searchValue != ""'>
+           AND EXAM_TITLE LIKE '%' || #{searchValue} || '%'
+           </if>
+    </select>
+
+    
+    <select id="easyHardSelect" parameterType="com.sist.web.model.PrevQue_Easy_Hard" resultMap="PrevQueEasyHardResultMap">
+		SELECT EXAM_SEQ,
+			   USER_ID,
+			   STATUS
+	      FROM PREVQUE_EASY_HARD
+		 WHERE EXAM_SEQ = #{examSeq}
+		   AND USER_ID = #{userId}
+	</select>
+    
+	<select id="easyHardSelect2" parameterType="long" resultType="long">
+	    SELECT COUNT(EXAM_SEQ) AS CNT
+	    FROM PREVQUE_EASY_HARD
+	    WHERE EXAM_SEQ = #{examSeq}
+	</select>
+	
+	<insert id="easyHardInsert" parameterType="com.sist.web.model.PrevQue_Easy_Hard">
+		INSERT INTO	PREVQUE_EASY_HARD (
+		    EXAM_SEQ,
+		    USER_ID,
+		    STATUS
+		) VALUES (
+		    #{examSeq},
+		    #{userId},
+		    #{status}
+		)
+	</insert>
+	
+	<delete id="easyHardDelete" parameterType="com.sist.web.model.PrevQue_Easy_Hard">
+		DELETE FROM PREVQUE_EASY_HARD
+		 WHERE EXAM_SEQ = #{examSeq}
+		   AND USER_ID = #{userId}
+	</delete>
+    
+    <select id="easyCnt" parameterType="long" resultType="long">
+	    SELECT COUNT(*)
+	      FROM PREVQUE_EASY_HARD
+	     WHERE EXAM_SEQ = #{value}
+	       AND STATUS = 'E'
+	</select>
+    <select id="hardCnt" parameterType="long" resultType="long">
+	    SELECT COUNT(*)
+	      FROM PREVQUE_EASY_HARD
+	     WHERE EXAM_SEQ = #{value}
+	       AND STATUS = 'H'
+	</select>
+
+    
+    
+    
+
+</mapper>
+

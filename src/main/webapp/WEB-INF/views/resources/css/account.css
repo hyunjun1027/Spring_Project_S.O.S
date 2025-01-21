@@ -1,0 +1,293 @@
+@charset "UTF-8";
+/*----------------------------------------------------
+# joinForm.css
+----------------------------------------------------*/
+footer * {
+	animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+	from { 
+		opacity:0;
+	}
+	to {
+		opacity: 1; /* 최종적으로 완전히 보이도록 설정 */
+	}
+}
+
+.footerBox {
+	width: 40%;
+	margin: auto;
+	color: var(--default-color);
+	background-color: rgba(25, 25, 25, 0.8);
+	font-size: 14px;
+	text-align: center;
+	padding: 100px 0;
+	position: sticky;
+	margin-top: -750px;
+	margin-bottom: 120px;
+	border-radius: 20px;
+}
+
+.footerBox h1 {
+	margin-bottom: 80px;
+	font-weight: bold;
+}
+
+.footer-innerBox {
+	width: 70%;
+	margin: auto;
+}
+
+.input_box {
+	position: relative;
+	width: 100%;
+}
+
+.input_box, .input_outBox {
+	margin-top: 45px;
+}
+
+.input_box, .input_outBox, .msg_box {
+	clear: both;
+}
+
+.input_outBox >.input_box {
+	width: 70%;
+	height: 36px;
+	float: left;
+	margin: 0px;
+}
+
+.input_outBox >.btn_box {
+	width: 25%;
+	box-sizing: border-box;
+	text-align: center;
+	float: right;
+}
+
+.input_outBox>.btn_box>.checkBtn {
+	width: 100%;
+	height: 38px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 11px;
+	font-weight: 550;
+	background: #f7f7f7;
+	color: #333;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.input_outBox>.btn_box>.checkBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	background: var(--nav-hover-color);
+	transition: all 0.5s ease;
+}
+
+.input_outBox>.btn_box>.checkBtn:hover {
+	color: #f7f7f7;
+}
+
+.input_outBox>.btn_box>.checkBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.input_outBox>.btn_box>.checkBtn:active {
+	top: 2px;
+}
+
+.form_input {
+	font-size: 15px;
+	color: #ddd;
+	width: 100%;
+	height: 36px;
+	border: none;
+	border-bottom: solid #ddd 2px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	position: relative;
+	background: none;
+}
+
+.form_input::placeholder {
+	color: #ddd;
+}
+
+.form_input:focus {
+	outline: none;
+}
+
+.under_bar {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0%;
+	background-color: var(--nav-hover-color);
+	width: 0;
+	height: 2px;
+	border-radius: 2px;
+	transition: 0.5s;
+}
+
+.sub_cont {
+	position: absolute;
+	color: #f7f7f7;
+	left: 10px;
+	font-size: 20px;
+	transition: all .2s;
+	bottom: 8px;
+	cursor: text;
+}
+
+.form_input:focus ~ .sub_cont, .form_input:valid ~ .sub_cont, .form_input:read-only ~ .sub_cont {
+	font-size: 16px;
+	bottom: 40px;
+	color: var(- -nav-hover-color);
+	font-weight: bold;
+}
+
+.form_input:focus ~ .under_bar, .form_input:valid ~ .under_bar, .form_input:read-only ~ .under_bar {
+	width: 100%;
+}
+
+.togglePwdBtn {
+    position: absolute;
+    right: 10px; /* 아이콘의 오른쪽 위치 */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.eye_icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(100%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(109%) contrast(107%);
+}
+
+.msg_box {
+	padding: 5px 7px;
+	color: #d83535;
+	font-weight: 550;
+}
+
+.msg_box > .info_msg {
+	float: left;
+}
+
+.left-box {
+	float: left;
+}
+
+.right-box {
+	float: right;
+}
+
+.radio-box {
+	/*margin: 0 50px;*/
+	font-size: 18px;
+}
+
+.radio-box > label {
+	vertical-align: 2px;
+}
+
+input[type='radio'] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	margin-right: 5px;
+	border: 2px solid #f7f7f7;
+	border-radius: 50%;
+	outline: none;
+}
+
+input[type='radio']:checked {
+	background-color: var(--nav-hover-color);
+	border: 3px solid rgba(40, 40, 40, 0.8);
+	box-shadow: 0 0 0 1px var(--nav-hover-color);
+}
+
+.btn-box {
+	padding-top: 40px;
+}
+
+.submitBtn {
+	padding: 12px 0;
+	width: 100%;
+	font-weight: 550;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	font-weight: 550;
+	background: #f7f7f7;
+	color: #333;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.submitBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	background: var(--nav-hover-color);
+	transition: all 0.5s ease;
+}
+
+.submitBtn:hover {
+	color: #f7f7f7;
+}
+
+.submitBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.submitBtn:active {
+	top: 2px;
+}
+.classCode {
+	-webkit-appearance: none;
+	width: 100%;
+	display: inline-block;
+	border: 1px solid #dbdbdb;
+	height: 40px;
+	font-size: 18px;
+	font-weight: 550;
+	color: #666;
+	border-radius: 6px;
+	padding: 8px;
+}
+
+.classCode option {
+	font-size: 18px;
+	font-weight: 550;
+}
+.classCode option:checked, .classCode option:hover {
+	background: #ddd;
+}

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sist.web.dao.AccountDao">
+	
+	<!-- 일반회원 resultMap -->
+	<resultMap type="com.sist.web.model.User" id="userResultMap">
+		<id column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_EMAIL" property="userEmail" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_PHONE" property="userPhone" />
+		<result column="ADDR_CODE" property="addrCode" />
+		<result column="ADDR_BASE" property="addrBase" />
+		<result column="ADDR_DETAIL" property="addrDetail" />
+		<result column="STATUS" property="status" />
+		<result column="RATING" property="rating" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="MOD_DATE" property="modDate" />
+		<result column="USER_PROFILE" property="userProfile" />
+		<result column="LOGIN_TYPE" property="loginType" />
+	</resultMap>
+	
+	<!-- 강사 resultMap -->
+	<resultMap type="com.sist.web.model.Teacher" id="teacherResultMap">
+		<id column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_EMAIL" property="userEmail" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_PHONE" property="userPhone" />
+		<result column="ADDR_CODE" property="addrCode" />
+		<result column="ADDR_BASE" property="addrBase" />
+		<result column="ADDR_DETAIL" property="addrDetail" />
+		<result column="STATUS" property="status" />
+		<result column="RATING" property="rating" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="MOD_DATE" property="modDate" />
+		<result column="USER_PROFILE" property="userProfile" />
+		<result column="USER_INTRO" property="userIntro" />
+		<result column="USER_DEGREE" property="userDegree" />
+		<result column="USER_CAREER" property="userCareer" />
+		<result column="CLASS_CODE" property="classCode" />
+	</resultMap>
+	
+	<!-- 관리자 resultMap -->
+	<!--<resultMap type="com.sist.web.medel.Admin" id="adminResultMap">
+		<id column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_EMAIL" property="userEmail" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_PHONE" property="userPhone" />
+		<result column="RATING" property="rating" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="USER_PROFILE" property="userProfile" />
+	</resultMap> -->
+	
+	
+	<!--  강사인지 회원인지 구분 -->
+	<select id="userOrTeacher" parameterType="String" resultMap="userResultMap">
+			SELECT
+			    USER_ID,
+			    USER_NAME,
+			    STATUS,
+			    RATING,
+			    USER_PROFILE
+			FROM
+			    (SELECT
+			        USER_ID,
+			        USER_NAME,
+			        STATUS,
+			        RATING,
+			        USER_PROFILE
+			    FROM EDU_USER
+			    
+			    UNION ALL
+			    
+			    SELECT
+			        USER_ID,
+			        USER_NAME,
+			        STATUS,
+			        RATING,
+			        USER_PROFILE
+			    FROM
+			        EDU_TEACHER)
+			WHERE
+			    USER_ID = #{value}
+	</select>
+	
+	<!-- 일반 회원 선택 -->
+	<select id="userSelect" parameterType="String" resultMap="userResultMap">
+		SELECT USER_ID,
+			   NVL(USER_PWD, '') USER_PWD,
+			   NVL(USER_EMAIL, '') USER_EMAIL, 
+			   NVL(USER_NAME, '') USER_NAME, 
+			   NVL(USER_PHONE, '') USER_PHONE, 
+			   NVL(ADDR_CODE, '') ADDR_CODE, 
+			   NVL(ADDR_BASE, '') ADDR_BASE, 
+			   NVL(ADDR_DETAIL, '') ADDR_DETAIL, 
+			   NVL(STATUS, 'N') STATUS, 
+			   NVL(RATING, '') RATING, 
+			   NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE, 
+			   NVL(TO_CHAR(MOD_DATE, 'YYYY.MM.DD'), '') MOD_DATE,  
+			   NVL(USER_PROFILE, '') USER_PROFILE,
+			   NVL(LOGIN_TYPE, '') LOGIN_TYPE
+		  FROM EDU_USER
+		 WHERE USER_ID = #{value}
+	</select>
+	<!-- 강사 회원 선택 -->
+	<select id="teacherSelect" parameterType="String" resultMap="teacherResultMap">
+		SELECT USER_ID,
+			   NVL(USER_PWD, '') USER_PWD, 
+			   NVL(USER_EMAIL, '') USER_EMAIL, 
+			   NVL(USER_NAME, '') USER_NAME, 
+			   NVL(USER_PHONE, '') USER_PHONE, 
+			   NVL(ADDR_CODE, '') ADDR_CODE, 
+			   NVL(ADDR_BASE, '') ADDR_BASE, 
+			   NVL(ADDR_DETAIL, '') ADDR_DETAIL, 
+			   NVL(STATUS, 'N') STATUS, 
+			   NVL(RATING, '') RATING, 
+			   NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE, 
+			   NVL(TO_CHAR(MOD_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') MOD_DATE,  
+			   NVL(USER_PROFILE, '') USER_PROFILE, 
+			   NVL(USER_INTRO, '') USER_INTRO, 
+			   NVL(USER_DEGREE, '') USER_DEGREE, 
+			   NVL(USER_CAREER, '') USER_CAREER, 
+			   NVL(CLASS_CODE, '') CLASS_CODE
+		  FROM EDU_TEACHER
+		 WHERE USER_ID = #{value}			   
+	</select>
+	
+	<!-- 관리자 회원 선택 -->
+	<!-- <select id="adminSelect" parameterType="String" resultMap="adminResultMap">
+		SELECT USER_ID,
+			   NVL(USER_PWD, '') USER_PWD, 
+			   NVL(USER_EMAIL, '') USER_EMAIL, 
+			   NVL(USER_NAME, '') USER_NAME, 
+			   NVL(USER_PHONE, '') USER_PHONE,
+			   NVL(RATING, '') RATING, 
+			   NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') REG_DATE, 
+			   NVL(USER_PROFILE, '') USER_PROFILE 
+		  FROM EDU_ADMIN
+		 WHERE USER_ID = #{value}
+	</select> -->
+
+	<!-- 북마크 -->
+    <resultMap type="com.sist.web.model.BoardMark" id="boardMarkResultMap">
+       <result column="BRD_SEQ" property="brdSeq"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="REG_DATE" property="regDate"/>
+        <result column="BRD_READ_CNT" property="brdReadCnt"/>
+        <result column="BRD_TITLE" property="brdTitle"/>
+    </resultMap>
+    
+    <!-- 자유게시판 -->
+   <resultMap type="com.sist.web.model.Board" id="boardResultMap">
+      <id column="BRD_SEQ" property="brdSeq" />
+      <id column="USER_ID" property="userId" />
+      <result column="BRD_TITLE" property="brdTitle" />
+      <result column="BRD_CONTENT" property="brdContent" />
+      <result column="BRD_READ_CNT" property="brdReadCnt" />
+      <result column="BRD_SECRET" property="brdSecret" />
+      <result column="REG_DATE" property="regDate" />
+      <result column="MOD_DATE" property="modDate" />
+      <result column="DEL_DATE" property="delDate" />
+      <result column="CATEGORY" property="category" />
+   </resultMap>
+
+	<select id="userIdSearch" parameterType="String" resultType="String">
+		SELECT USER_ID
+		  FROM EDU_USER
+		 WHERE USER_NAME = #{param1}
+		   AND USER_EMAIL = #{param2}
+		   AND USER_PHONE = #{param3}
+	</select>
+	<select id="teacherIdSearch" parameterType="String" resultType="String">
+		SELECT USER_ID
+		  FROM EDU_TEACHER
+		 WHERE USER_NAME = #{param1}
+		   AND USER_EMAIL = #{param2}
+		   AND USER_PHONE = #{param3}
+	</select>
+	
+	<select id="userEmailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(USER_ID)
+		  FROM EDU_USER
+		 WHERE USER_EMAIL = #{value}
+		   AND LOGIN_TYPE IS NULL
+	</select>
+	
+	<select id="teacherEmailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(USER_ID)
+		  FROM EDU_TEACHER
+		 WHERE USER_EMAIL = #{value}
+	</select>
+
+	<insert id="userInsert" parameterType="com.sist.web.model.User">
+		INSERT INTO EDU_USER ( 
+			   USER_ID, 
+			   USER_PWD, 
+			   USER_EMAIL, 
+			   USER_NAME, 
+			   USER_PHONE, 
+			   ADDR_CODE, 
+			   ADDR_BASE, 
+			   ADDR_DETAIL, 
+			   STATUS, 
+			   RATING, 
+			   REG_DATE,
+			   LOGIN_TYPE
+		) VALUES ( 
+			   #{userId}, 
+			   #{userPwd}, 
+			   #{userEmail}, 
+			   #{userName}, 
+			   #{userPhone}, 
+			   #{addrCode}, 
+			   #{addrBase}, 
+			   #{addrDetail}, 
+			   'Y', 
+			   #{rating}, 
+			   SYSDATE,
+			   #{loginType}
+		)
+	</insert>
+
+	<insert id="teacherInsert" parameterType="com.sist.web.model.Teacher">
+		INSERT INTO EDU_TEACHER ( 
+			   USER_ID, 
+			   USER_PWD, 
+			   USER_EMAIL, 
+			   USER_NAME, 
+			   USER_PHONE, 
+			   ADDR_CODE, 
+			   ADDR_BASE, 
+			   ADDR_DETAIL, 
+			   STATUS, 
+			   RATING, 
+			   REG_DATE 
+		) 
+		VALUES( 
+			   #{userId}, 
+			   #{userPwd}, 
+			   #{userEmail}, 
+			   #{userName}, 
+			   #{userPhone}, 
+			   #{addrCode}, 
+			   #{addrBase}, 
+			   #{addrDetail}, 
+			   'W', 
+			   #{rating}, 
+			   SYSDATE 			   
+		)
+	</insert>
+
+	<!-- 일반 유저 비밀번호 변경 -->
+	<update id="userPwdChange" parameterType="String">
+		UPDATE EDU_USER
+		   SET USER_PWD = #{param2}
+		 WHERE USER_ID = #{param1}
+	</update>
+	<update id="teacherPwdChange" parameterType="String">
+		UPDATE EDU_TEACHER
+		   SET USER_PWD = #{param2}
+		 WHERE USER_ID = #{param1}
+	</update>
+	
+	<!-- 유저 status 변경 -->
+	<update id="userStatusUpdate" parameterType="String">
+		UPDATE EDU_USER
+		   SET STATUS = #{param2}
+		 WHERE USER_ID = #{param1}
+	</update>
+	<update id="teacherStatusUpdate" parameterType="String">
+		UPDATE EDU_TEACHER
+		   SET STATUS = #{param2}
+		 WHERE USER_ID = #{param1}
+	</update>
+
+	<update id="userModDateUpdate" parameterType="String">
+		UPDATE EDU_USER
+		   SET MOD_DATE = SYSDATE
+		 WHERE USER_ID = #{value}
+	</update>
+
+	<update id="teacherModDateUpdate" parameterType="String">
+		UPDATE EDU_TEACHER
+		   SET MOD_DATE = SYSDATE
+		 WHERE USER_ID = #{value}
+	</update>
+
+   <!--일반 유저 회원정보 변경 -->
+   <update id="userInfoUpdate" parameterType="com.sist.web.model.User">
+       UPDATE EDU_USER
+         SET USER_EMAIL = #{userEmail},
+             USER_NAME = #{userName},
+             USER_PHONE = #{userPhone},
+             ADDR_CODE = #{addrCode},
+             ADDR_BASE = #{addrBase},
+             ADDR_DETAIL = #{addrDetail},
+             MOD_DATE = SYSDATE
+         WHERE USER_ID = #{userId}
+   </update>
+	<!-- 유저 프로필 변경 -->
+	<update id="userProfileUpdate" parameterType="String">
+		UPDATE EDU_USER
+		   SET USER_PROFILE = #{param2}
+		 WHERE USER_ID = #{param1}
+	</update>
+	<!-- 유저 프로필 변경 -->
+	<update id="teacherProfileUpdate" parameterType="String">
+		UPDATE EDU_TEACHER
+		SET USER_PROFILE = #{param2}
+		WHERE
+		USER_ID = #{param1}
+	</update>
+
+
+	<!-- 내가 저장한 글 조회 -->
+	<select id="BookMarkList" parameterType="com.sist.web.model.Board" resultMap="boardResultMap">
+		SELECT BRD_TITLE,
+			   BRD_SEQ,
+		       USER_ID,
+		       REG_DATE,
+		       BRD_READ_CNT
+		  FROM (SELECT ROWNUM AS RNUM,
+		               BRD_TITLE,
+		               BRD_SEQ,
+		               USER_ID,
+		               REG_DATE,
+		               BRD_READ_CNT
+		         FROM(SELECT BOARD.BRD_TITLE,
+		         			 BOARD.BRD_SEQ,
+		                     BOOKMARK.USER_ID,
+		                     BOARD.REG_DATE,
+		                     BOARD.BRD_READ_CNT
+		                FROM EDU_BOARD_BOOKMARK BOOKMARK, EDU_BOARD BOARD
+		               WHERE BOOKMARK.USER_ID = #{userId}
+		                 AND BOOKMARK.BRD_SEQ = BOARD.BRD_SEQ
+		                 AND BOARD.DEL_DATE IS NULL
+		        <if test='category != 0'>
+		        		 AND BOARD.CATEGORY = #{category}
+		        </if>
+		               ORDER BY BOARD.REG_DATE DESC))
+		WHERE RNUM <![CDATA[>=]]> #{startRow}
+		   AND RNUM <![CDATA[<=]]> #{endRow}       
+	</select>
+	
+	<!-- 내가 저장한 글수 -->
+	<select id="bookMarkListCount" parameterType="com.sist.web.model.Board" resultType="long">
+		SELECT COUNT(*) AS CNT
+		  FROM EDU_BOARD BOARD, (SELECT *
+                        		   FROM EDU_BOARD_BOOKMARK BOOKMARK
+                        		  WHERE USER_ID = #{userId}) BOOKMARK
+		 WHERE BOOKMARK.BRD_SEQ = BOARD.BRD_SEQ
+	<if test='category != 0'>
+     	   AND BOARD.CATEGORY = #{category}
+	</if>
+		   AND BOARD.DEL_DATE IS NULL
+	</select>
+	
+	<!-- 내가 쓴 글 -->
+	<select id="selectboardList" parameterType="com.sist.web.model.Board" resultMap="boardResultMap">
+		SELECT BRD_TITLE,
+		       BRD_SEQ,
+		       USER_ID,
+		       REG_DATE,
+		       BRD_READ_CNT
+		  FROM (SELECT ROWNUM AS RNUM,
+			           BRD_TITLE,
+			           BRD_SEQ,
+			           USER_ID,
+			           REG_DATE,
+			           BRD_READ_CNT
+		    	  FROM (SELECT BRD_TITLE,
+			                   BRD_SEQ,
+			                   USER_ID,
+			                   NVL(TO_CHAR(REG_DATE,'YYYY.MM.DD HH24:MI:SS'),'') AS REG_DATE,
+			                   BRD_READ_CNT
+			              FROM EDU_BOARD      
+			             WHERE USER_ID = #{userId}
+		            	   AND DEL_DATE IS NULL
+		           <if test='category != 0'>
+		        		   AND CATEGORY = #{category}
+		        	</if>
+		            ORDER BY REG_DATE DESC))
+		 WHERE RNUM <![CDATA[>=]]> #{startRow}
+		   AND RNUM <![CDATA[<=]]> #{endRow} 
+	</select>
+
+	<!-- 내가 쓴 글수 -->
+	<select id="selectboardListCount" parameterType="com.sist.web.model.Board" resultType="long">
+		SELECT COUNT(*) AS CNT
+		  FROM EDU_BOARD
+		 WHERE USER_ID = #{userId}
+	<if test='category != 0'>
+     	   AND CATEGORY = #{category}
+	</if>
+		   AND DEL_DATE IS NULL
+	</select>
+</mapper>

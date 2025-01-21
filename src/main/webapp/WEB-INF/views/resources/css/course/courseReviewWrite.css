@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.star-rating {
+    display: flex;
+    flex-direction: row; /* 왼쪽에서 오른쪽으로 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    cursor: pointer;
+    gap: 5px; /* 별 간격 */
+}
+
+.star-rating .star {
+    font-size: 36px; /* 별 크기 */
+    color: #ccc; /* 기본 회색 */
+    transition: color 0.2s ease-in-out;
+}
+
+.star-rating .star.hover,
+.star-rating .star.selected {
+    color: #ffcc00; /* 호버 또는 선택된 별 색상 */
+}
+
+.rating-label {
+	margin-bottom: 0px;
+	margin-top: 20px;
+}

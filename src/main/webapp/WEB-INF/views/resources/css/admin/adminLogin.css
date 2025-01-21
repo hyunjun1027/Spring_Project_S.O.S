@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.login-contents {
+	transform: translateY(90%);
+	width: 580px;
+	height: 21rem;
+	margin: auto;
+	text-align: center;
+	border: .1px solid #D4D6D8;
+	border-radius: 20px;
+	background-color: #F4F5F8;
+	box-shadow: 1px 2px #AEB3B8;
+}
+
+.login_block {
+	padding-top: 10px;
+	letter-spacing: -1px;
+}
+
+.image_text {
+	position: absolute;
+	left: 62px;
+	top: -18px;
+	color: white;
+	z-index: 1;
+}

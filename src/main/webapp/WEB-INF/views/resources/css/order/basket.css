@@ -1,0 +1,513 @@
+@charset "UTF-8";
+
+/* Reset */
+*{box-sizing: border-box; font-family: 'Orbitron', 'Noto Sans KR',sans-serif;}
+html, body{margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6, p{margin: 0;}
+ul, ol{margin: 0; padding: 0; list-style: none;}
+a, a:hover{text-decoration: none;}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+
+}
+
+:root {
+  --nav-color: #fafafa;  /* The default color of the main navmenu links */
+  --nav-hover-color: #355F2E; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #18d26e; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+    color: var(--nav-hover-color);
+}
+
+
+/* Notice Section */
+ .notice-section {
+    padding: 30px;
+    background: #64B9B2;
+
+}
+
+.notice-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1320px;
+    margin: auto;
+}
+
+.notice-text {
+    flex: 1;
+    margin-left: 100px;
+    margin-top: 170px;
+    transform: translateY(-46px);
+
+}
+
+.notice-text .mainTitle {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.notice-text .mainContent {
+    font-size: 30px;
+    color: #fff;
+    margin-top: -8px;
+}
+
+.notice-image img {
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+    margin-right: 100px;
+    animation: moveUpDownReverse 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes moveUpDownReverse {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 페이징 CSS */
+  
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 요소 간의 간격 */
+    margin-top: 70px;
+}
+
+.pagination-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-size: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.pagination-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.pagination-number {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.pagination-number.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.pagination-separator {
+    font-size: 14px;
+    color: #aaa;
+}
+
+
+/*네비 투명*/
+.header{
+background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+
+.bold-hr {
+	border-top: 3px solid black;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+
+
+/* 주문 content CSS */
+.content-section {
+	background-color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+.cart-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+	color: black;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.cart-table th {
+	border-top: 2px solid black;
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.basket-title {
+	color: black;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.basket-sub-title {
+	color: black;
+	margin-left: 10px;
+}
+
+.number {
+	color: red;
+}
+
+.table {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.quantity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-select {
+    width: 60px;
+    height: 30px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    text-align: center;
+}
+
+.change-button {
+    width: 60px;
+    height: 30px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* 버튼 CSS */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.pay-button {
+    width: 80px;
+    height: 30px;
+    background-color: #ff5f5f;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.delete-button {
+    width: 80px;
+    height: 30px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #6c757d;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+/* 전채선택/전체삭제 CSS */
+.selection-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+
+.select-all,
+.delete-selected {
+    width: 90px;
+    height: 35px;
+    background-color: #ccc;
+    color: white;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding: 0;
+}
+
+
+/* 결제 정보 요약 CSS */
+.summary-container {
+    padding: 20px;
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-bottom: 15px;
+}
+
+.summary-table td {
+    text-align: center;
+    padding: 10px;
+    font-size: 40px;
+    vertical-align: middle;
+    color: black;
+}
+
+.summary-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.summary-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.summary-symbol {
+    width: 50px; /* td의 크기를 줄임 */
+    font-size: 24px; /* 폰트 크기를 키움 */
+    font-weight: bold;
+    color: #999;
+    text-align: center;
+}
+
+
+.summary-total {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.total-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+.total-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff6600;
+    margin-top: 5px;
+}
+
+.total-sub-value {
+	font-size: 22px;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px;
+}
+
+.info-text {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+/* 주문 버튼 CSS */
+.order-buttons {
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽 끝으로 정렬 */
+    gap: 10px; /* 버튼 간의 간격 */
+    margin-top: 20px;
+}
+
+.select-order,
+.all-order {
+    width: 150px; /* 버튼의 가로 크기 */
+    height: 40px; /* 버튼의 세로 크기 */
+    font-size: 16px; /* 폰트 크기 */
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    line-height: 40px; /* 텍스트를 버튼 중앙에 정렬 */
+}
+
+.select-order {
+    background-color: #0056b3; /* 파란색 버튼 */
+}
+
+.all-order {
+    background-color: #e03131; /* 빨간색 버튼 */
+}
+
+
+/* 결제상태 CSS */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 제목과 진행 상태바를 양 끝으로 배치 */
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+}
+
+.title-container {
+    align-items: center;
+    gap: 10px; /* 제목과 서브 타이틀 간의 간격 */
+}
+
+.basket-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.basket-sub-title {
+    color: #666;
+}
+
+.number {
+    font-weight: bold;
+    color: #ff6600; /* 강조 색상 */
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 단계 간 간격 */
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    color: #aaaaaa; /* 비활성화된 텍스트 색상 */
+}
+
+.step .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0; /* 비활성화된 아이콘 배경색 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.step.active .icon {
+    background-color: #007bff; /* 활성화된 아이콘 배경색 */
+}
+
+.step.active p {
+    color: #007bff; /* 활성화된 텍스트 색상 */
+    font-weight: bold;
+}
+
+.arrow {
+    font-size: 18px;
+    color: #aaaaaa; /* 화살표 색상 */
+    font-weight: bold;
+}
+
+.product-price {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

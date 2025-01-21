@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.contentContainer .myCourseContainer {
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.contentContainer .myCourseContainer > div {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	flex-basis: calc(50%);
+	text-align: center;
+	margin: 20px 0px;
+	padding: 20px 0px;
+}
+
+.contentContainer .myCourseContainer > div:first-child {
+	border-right: 1px solid gray;
+}
+
+.contentContainer .myCourseContainer > div > h3 {
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.contentContainer .myCourseContainer > div > span {
+	font-size: 16px;
+}
+
+.contentContainer .myCourseContainer > div > div {
+	margin: 10px 0;
+}
+
+.contentContainer .myCourseContainer > div > div span {
+	font-size: 38px;
+	font-family: none;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+.second-title {
+	font-size: 27px;
+}
+
+.contentContainer .myRecentContainer {
+	width: 80%;
+	margin: auto;
+}
+
+.contentContainer .myRecentContainer .subjectList {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.contentContainer .myRecentContainer .subjectList nav {
+	width: 100%;
+	padding-bottom: 5px;
+	display: flex;
+	justify-content: center;
+	border-bottom: 2px solid #666;
+}
+
+.contentContainer .myRecentContainer .subjectList nav > ul > li {
+	padding: 15px;
+	margin: 0px 30px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList {
+	width: 100%;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem img {
+	width: 120px;
+	height: 120px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem {
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	padding: 30px 10px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:first-child {
+	flex-basis: calc(20%);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child {
+	flex-basis: calc(80%);
+	font-size: 16px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div {
+	display: inline;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .teach-subject {
+	color: var(--accent-color);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .teach-subject-title {
+	font-weight: 550;
+	font-size: 20px;
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > div .my-ing {
+	color: var(--accent-color);
+}
+
+.contentContainer .myRecentContainer .subjectClassList .subjectClassItem > div:last-child > .middle-container {
+	margin: 10px 0 30px;
+}

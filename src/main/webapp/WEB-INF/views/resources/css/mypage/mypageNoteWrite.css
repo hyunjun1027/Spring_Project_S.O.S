@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+.stats-highlight {
+	color : var(--accent-color);
+}
+
+.textContainer {
+	padding: 8px 0 15px 10px;
+	border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.sendEmailBox {
+	border-radius: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 8px 12px;
+	width: 30%;
+	font-size: 15px;
+	box-sizing: border-box;
+}
+
+.sendEmailBox:focus {
+	outline: none;
+	border-color: #66afe9;
+}
+
+.board-content {
+	border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+.note-textarea {
+	width: 100%;
+	height: 500px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: white;
+	font-size: 15px;
+	box-sizing: border-box;
+	resize: none;
+	margin-top: 20px;
+}
+
+.note-textarea:focus {
+	outline: none;
+	border-color: #66afe9;
+}
+
+.btnContainer {
+	display : flex;
+	justify-content: flex-end;
+	width: 100%;	
+}
+
+.btnContainer>.inputBtn {
+	margin: 20px 0 10px 10px;
+	width: 100px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.btnContainer>#writeBtn {
+	background: white;
+	color: #333;
+}
+
+.btnContainer>#listBtn {
+	background: #f5d5bc;
+	color: #333;
+}
+
+.btnContainer>.inputBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	border-radius: 5px;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+.btnContainer>#writeBtn:after {
+	background: #05ad53;
+}
+
+.btnContainer>#listBtn:after {
+	background: #f9c399;
+}
+
+.btnContainer>.inputBtn:hover {
+	color: #f7f7f7;
+}
+
+.btnContainer>.inputBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+
+.btnContainer>.inputBtn:active {
+	top: 2px;
+}
+.modal-user{
+	border-radius:10px; 
+	display: block; 
+	position:absolute; 
+	top:50px; 
+	left:100px; 
+	width:30%; 
+	background-color:white; 
+	color:black;
+}
+#modal-user{
+	border-radius:10px; 
+	display: block; 
+	position:absolute; 
+	top:50px; 
+	left:100px; 
+	width:30%;
+	border:1px solid gray;
+	background: #dcdcdc; 
+	color:black;
+}
+.userListList{
+	
+}
+.userList{
+	background-color:black;
+	list-style-type:none; 
+	list-style:none;
+	margin:10px 5px; 
+	padding:0;
+}
+.userList > li{
+	float:left;
+	margin:5px;
+}
+.userId{
+	overflow:hidden;
+	text-overflow:clip;
+	white-space:nowrap;
+	width:50%;
+	margin-right:10%;
+}
+.userName{
+	text-align:right;
+	width:40%;
+}

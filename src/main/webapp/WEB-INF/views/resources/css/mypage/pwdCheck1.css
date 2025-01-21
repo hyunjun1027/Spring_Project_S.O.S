@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+.contentBoardContainer .title-div .first-title{
+	font-weight: bolder;
+}
+
+.contentBoardContainer .changePwdContainer{
+	text-align: center;
+}
+
+.contentBoardContainer .changePwdContainer .secondtitle{
+	font-size: 46px;
+	margin: 130px 0 30px 0;
+	font-weight: bold;
+	color: var(--nav-hover-color);
+}
+
+.contentBoardContainer .changePwdContainer .content{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.input_box{
+    font-size: 15px;
+    color: #ddd;
+    height: 36px;
+    border: none;
+    border-bottom: solid #ddd 2px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+    background: none;
+   	width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.under_bar {
+	display: block;
+	position: absolute;
+	bottom: -2px;
+	left: 0%;
+	background-color: var(--nav-hover-color);
+	width: 0;
+	height: 2px;
+	border-radius: 2px;
+	transition: 0.5s;
+}
+
+.togglePwdBtn {
+    position: absolute;
+    right: 10px; /* 아이콘의 오른쪽 위치 */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.eye_icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(100%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(109%) contrast(107%);
+}
+
+.sub-content{
+	margin-top: 180px;
+}
+
+.find-btn{
+	text-align: center;
+}
+.ok-btn{
+	background-color: var(--nav-hover-color);
+	color: white;
+	border: none;
+	width: 240px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.cencle-btn{
+	margin-left: 10px;
+	background-color: #fff;
+	color: #000;
+	border: none;
+	width: 240px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.guid-content{
+	margin-top: 30px;
+	font-size: 12px;
+	color: #ccc;
+}
+
+
+
+
+
