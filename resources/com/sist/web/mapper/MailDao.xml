@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sist.web.dao.MailDao">
+
+	<resultMap type="com.sist.web.model.Mail" id="mailResultMap">
+		<id column="USER_EMAIL" property="userEmail" />
+		<result column="AUTH_NUM" property="authNum" />
+	</resultMap>
+
+	<select id="mailSelect" parameterType="String" resultMap="mailResultMap">
+		SELECT USER_EMAIL,
+		       AUTH_NUM
+		  FROM MAIL
+		 WHERE USER_EMAIL = #{userEmail}
+	</select>
+
+	<insert id="mailInsert" parameterType="com.sist.web.model.Mail">
+		INSERT INTO MAIL (
+			USER_EMAIL, 
+			AUTH_NUM
+		) VALUES (
+			#{userEmail}, 
+			#{authNum}
+		)
+	</insert>
+
+	<delete id="mailDelete" parameterType="String">
+		DELETE FROM MAIL 
+		 WHERE USER_EMAIL = #{userEmail}
+	</delete>
+
+	<!-- <update id="mailUpdate" parameterType="com.sist.web.model.Mail">
+		UPDATE TBL_USER SET AUTH_NUM = #{authNum}
+		 WHERE USER_EMAIL = #{userEmail}
+	</update>
+ -->	
+
+	
+	
+	
+	
+	
+	
+	
+</mapper>

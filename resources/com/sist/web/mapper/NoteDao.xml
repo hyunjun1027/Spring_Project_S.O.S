@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sist.web.dao.NoteDao">
+
+<resultMap type="com.sist.web.model.Note" id="noteResultMap">
+    <id column="NOTE_SEQ" property="noteSeq" />
+    <result column="USER_ID" property="userId" />
+   <result column="USER_NAME" property="userName" />
+   <result column="RATING" property="rating" />
+   <result column="USER_ID_GET" property="userIdGet" />
+   <result column="USER_NAME_GET" property="userNameGet" />
+   <result column="RATING_GET" property="ratingGet" />
+   <result column="NOTE_TITLE" property="noteTitle" />
+   <result column="NOTE_CONTENT" property="noteContent" />
+   <result column="REG_DATE" property="regDate" />
+   <result column="DEL_DATE" property="delDate" />
+   <result column="READ" property="read" />
+   
+</resultMap>
+
+<!-- 쪽지 보내기 -->
+<insert id="noteInsert" parameterType="com.sist.web.model.Note" >
+
+   <selectKey resultType="long" keyProperty="noteSeq" order="BEFORE">
+      SELECT EDU_NOTE_SEQ.NEXTVAL FROM DUAL
+   </selectKey>
+      INSERT INTO EDU_NOTE (
+          NOTE_SEQ,
+          USER_ID,
+          USER_NAME,
+          RATING,
+          USER_ID_GET,
+          USER_NAME_GET,
+          RATING_GET,
+          NOTE_TITLE,
+          NOTE_CONTENT,
+          REG_DATE,
+          DEL_DATE,
+          READ
+      ) VALUES (
+          #{noteSeq},
+          #{userId},
+          #{userName},
+          #{rating},
+          #{userIdGet},
+          #{userNameGet},
+          #{ratingGet},
+          '',
+          #{noteContent},
+          SYSDATE,
+          '',
+          'N'
+      )
+</insert>
+
+<!--보낸 쪽지 리스트 -->
+<select id = "noteSendList" parameterType = "com.sist.web.model.Note" resultMap="noteResultMap">
+
+SELECT  NUM,
+        NOTE_SEQ,
+        USER_ID,
+        USER_NAME,
+        RATING,
+        USER_ID_GET,
+        USER_NAME_GET,
+        RATING_GET,
+        NOTE_TITLE,
+        NOTE_CONTENT,
+        REG_DATE,
+        DEL_DATE,
+        READ
+FROM    (SELECT  ROWNUM NUM,
+                    NOTE_SEQ,
+                    USER_ID,
+                    USER_NAME,
+                    RATING,
+                    USER_ID_GET,
+                    USER_NAME_GET,
+                    RATING_GET,
+                    NOTE_TITLE,
+                    NOTE_CONTENT,
+                    REG_DATE,
+                    DEL_DATE,
+                    READ
+            FROM    (SELECT  NOTE_SEQ,
+                            NVL(USER_ID, '') USER_ID,
+                            NVL(USER_NAME, '') USER_NAME,
+                            NVL(RATING, 'U') RATING,
+                            NVL(USER_ID_GET, '') USER_ID_GET,
+                            NVL(USER_NAME_GET, '') USER_NAME_GET,
+                            NVL(RATING_GET, 'U') RATING_GET,
+                            NVL(NOTE_TITLE, '') NOTE_TITLE,
+                            NVL(NOTE_CONTENT, '') NOTE_CONTENT,
+                            NVL(TO_CHAR(REG_DATE, 'YY.MM.DD HH24:MI'), '') REG_DATE,
+                            NVL(TO_CHAR(DEL_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') DEL_DATE,
+                            NVL(READ, '') READ
+                    FROM    EDU_NOTE
+                    WHERE   USER_ID=#{userId}
+                    AND     DEL_DATE IS NULL
+                 ORDER BY   REG_DATE DESC))
+                 
+WHERE NUM <![CDATA[>=]]> #{startRow}
+AND NUM <![CDATA[<=]]> #{endRow}
+</select>
+
+<!-- 보낸쪽지 수 카운트 -->
+<select id="sendListCount" parameterType = "String" resultType = "int">
+
+SELECT COUNT(NOTE_SEQ) AS CNT
+FROM   EDU_NOTE
+WHERE  USER_ID=#{value}
+AND    DEL_DATE IS NULL
+
+</select>
+
+
+<!-- 받은쪽지 수 카운트 -->
+<select id="getListCount" parameterType = "String" resultType = "int">
+
+SELECT COUNT(NOTE_SEQ) AS CNT
+FROM   EDU_NOTE
+WHERE  USER_ID_GET=#{value}
+AND    DEL_DATE IS NULL
+
+</select>
+
+
+
+<!-- 받은 쪽지 리스트 -->
+<select id = "noteGetList" parameterType = "com.sist.web.model.Note" resultMap="noteResultMap">
+
+SELECT  NUM,
+        NOTE_SEQ,
+        USER_ID,
+        USER_NAME,
+        RATING,
+        USER_ID_GET,
+        USER_NAME_GET,
+        RATING_GET,
+        NOTE_TITLE,
+        NOTE_CONTENT,
+        REG_DATE,
+        DEL_DATE,
+        READ
+FROM    (SELECT  ROWNUM NUM,
+                    NOTE_SEQ,
+                    USER_ID,
+                    USER_NAME,
+                    RATING,
+                    USER_ID_GET,
+                    USER_NAME_GET,
+                    RATING_GET,
+                    NOTE_TITLE,
+                    NOTE_CONTENT,
+                    REG_DATE,
+                    DEL_DATE,
+                    READ
+            FROM    (SELECT  NOTE_SEQ,
+                            NVL(USER_ID, '') USER_ID,
+                            NVL(USER_NAME, '') USER_NAME,
+                            NVL(RATING, 'U') RATING,
+                            NVL(USER_ID_GET, '') USER_ID_GET,
+                            NVL(USER_NAME_GET, '') USER_NAME_GET,
+                            NVL(RATING_GET, 'U') RATING_GET,
+                            NVL(NOTE_TITLE, '') NOTE_TITLE,
+                            NVL(NOTE_CONTENT, '') NOTE_CONTENT,
+                            NVL(TO_CHAR(REG_DATE, 'YY.MM.DD HH24:MI'), '') REG_DATE,
+                            NVL(TO_CHAR(DEL_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') DEL_DATE,
+                            NVL(READ, '') READ
+                    FROM    EDU_NOTE
+                    WHERE   USER_ID_GET=#{userIdGet}
+                    AND     DEL_DATE IS NULL
+                 ORDER BY   REG_DATE DESC))
+                 
+WHERE NUM <![CDATA[>=]]> #{startRow}
+AND NUM <![CDATA[<=]]> #{endRow}
+</select>
+
+<!-- 쪽지 조회 -->
+<select id="noteSelect" parameterType = "long" resultMap="noteResultMap">
+SELECT  NOTE_SEQ,
+        NVL(USER_ID, '') USER_ID,
+        NVL(USER_NAME, '') USER_NAME,
+        NVL(RATING, 'U') RATING,
+        NVL(USER_ID_GET, '') USER_ID_GET,
+        NVL(USER_NAME_GET, '') USER_NAME_GET,
+        NVL(RATING_GET, 'U') RATING_GET,
+        NVL(NOTE_TITLE, '') NOTE_TITLE,
+        NVL(NOTE_CONTENT, '') NOTE_CONTENT,
+        NVL(TO_CHAR(REG_DATE, 'YY.MM.DD HH24:MI'), '') REG_DATE,
+        NVL(TO_CHAR(DEL_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') DEL_DATE,
+        NVL(READ, '') READ
+FROM    EDU_NOTE
+WHERE   NOTE_SEQ=#{value}
+AND     DEL_DATE IS NULL
+
+</select>
+
+
+<!-- 쪽지 삭제 -->
+<update id="noteDelete" parameterType = "long">
+UPDATE  EDU_NOTE
+SET     DEL_DATE = SYSDATE
+WHERE   NOTE_SEQ = #{value}
+</update>
+
+<!-- 받은 쪽지 클릭시 읽음상태 변경 -->
+<update id="readChange" parameterType="com.sist.web.model.Note">
+UPDATE  EDU_NOTE
+SET    READ = 'Y'
+WHERE   NOTE_SEQ = #{noteSeq}
+AND      USER_ID_GET= #{userIdGet}
+</update>
+
+
+<!-- 받은 쪽지 중 안읽은 쪽지 카운트 -->
+<select id="noreadCount" parameterType="String" resultType="int">
+SELECT COUNT(NOTE_SEQ) AS CNT
+FROM   EDU_NOTE
+WHERE  USER_ID_GET=#{value}
+AND    READ = 'N'
+AND    DEL_DATE IS NULL
+</select>
+
+
+</mapper>
